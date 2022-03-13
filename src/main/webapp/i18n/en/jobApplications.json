@@ -1,0 +1,30 @@
+{
+  "lawfirmApp": {
+    "jobApplications": {
+      "home": {
+        "title": "Job Applications",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Job Applications",
+        "createOrEditLabel": "Create or edit a Job Applications",
+        "notFound": "No Job Applications found"
+      },
+      "created": "A new Job Applications is created with identifier {{ param }}",
+      "updated": "A Job Applications is updated with identifier {{ param }}",
+      "deleted": "A Job Applications is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Job Applications {{ id }}?"
+      },
+      "detail": {
+        "title": "Job Applications"
+      },
+      "id": "ID",
+      "name": "Name",
+      "surname": "Surname",
+      "email": "Email",
+      "phone": "Phone",
+      "area": "Area",
+      "message": "Message",
+      "cv": "Cv"
+    }
+  }
+}

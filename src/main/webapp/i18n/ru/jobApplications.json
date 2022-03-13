@@ -1,0 +1,30 @@
+{
+  "lawfirmApp": {
+    "jobApplications": {
+      "home": {
+        "title": "Job Applications",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Job Applications",
+        "createOrEditLabel": "Создать или отредактировать Job Applications",
+        "notFound": "Job Applications не найдено"
+      },
+      "created": "Новый Job Applications создан с идентификатором {{ param }}",
+      "updated": "Job Applications обновлен с идентификатором {{ param }}",
+      "deleted": "Job Applications удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Job Applications {{ id }}?"
+      },
+      "detail": {
+        "title": "Job Applications"
+      },
+      "id": "ID",
+      "name": "Name",
+      "surname": "Surname",
+      "email": "Email",
+      "phone": "Phone",
+      "area": "Area",
+      "message": "Message",
+      "cv": "Cv"
+    }
+  }
+}

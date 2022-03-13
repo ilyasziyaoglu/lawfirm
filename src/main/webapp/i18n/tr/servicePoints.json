@@ -1,0 +1,30 @@
+{
+  "lawfirmApp": {
+    "servicePoints": {
+      "home": {
+        "title": "Service Points",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Service Points",
+        "createOrEditLabel": "Create or edit a Service Points",
+        "notFound": "No Service Points found"
+      },
+      "created": "A new Service Points is created with identifier {{ param }}",
+      "updated": "A Service Points is updated with identifier {{ param }}",
+      "deleted": "A Service Points is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Service Points {{ id }}?"
+      },
+      "detail": {
+        "title": "Service Points"
+      },
+      "id": "ID",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "mapUrl": "Map Url",
+      "latitude": "Latitude",
+      "longitude": "Longitude"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="jobApplications">
+      <h2 data-cy="jobApplicationsDetailsHeading"><span jhiTranslate="lawfirmApp.jobApplications.detail.title">Job Applications</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ jobApplications.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.jobApplications.name">Name</span></dt>
+        <dd>
+          <span>{{ jobApplications.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.jobApplications.surname">Surname</span></dt>
+        <dd>
+          <span>{{ jobApplications.surname }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.jobApplications.email">Email</span></dt>
+        <dd>
+          <span>{{ jobApplications.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.jobApplications.phone">Phone</span></dt>
+        <dd>
+          <span>{{ jobApplications.phone }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.jobApplications.area">Area</span></dt>
+        <dd>
+          <span>{{ jobApplications.area }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.jobApplications.message">Message</span></dt>
+        <dd>
+          <span>{{ jobApplications.message }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.jobApplications.cv">Cv</span></dt>
+        <dd>
+          <div *ngIf="jobApplications.cv">
+            <a (click)="openFile(jobApplications.cv, jobApplications.cvContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ jobApplications.cvContentType }}, {{ byteSize(jobApplications.cv) }}
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/job-applications', jobApplications.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

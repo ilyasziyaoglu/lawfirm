@@ -1,0 +1,26 @@
+{
+  "lawfirmApp": {
+    "references": {
+      "home": {
+        "title": "References",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new References",
+        "createOrEditLabel": "Create or edit a References",
+        "notFound": "No References found"
+      },
+      "created": "A new References is created with identifier {{ param }}",
+      "updated": "A References is updated with identifier {{ param }}",
+      "deleted": "A References is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete References {{ id }}?"
+      },
+      "detail": {
+        "title": "References"
+      },
+      "id": "ID",
+      "name": "Name",
+      "order": "Order",
+      "image": "Image"
+    }
+  }
+}

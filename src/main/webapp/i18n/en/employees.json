@@ -1,0 +1,31 @@
+{
+  "lawfirmApp": {
+    "employees": {
+      "home": {
+        "title": "Employees",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Employees",
+        "createOrEditLabel": "Create or edit a Employees",
+        "notFound": "No Employees found"
+      },
+      "created": "A new Employees is created with identifier {{ param }}",
+      "updated": "A Employees is updated with identifier {{ param }}",
+      "deleted": "A Employees is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Employees {{ id }}?"
+      },
+      "detail": {
+        "title": "Employees"
+      },
+      "id": "ID",
+      "name": "Name",
+      "surname": "Surname",
+      "title": "Title",
+      "story": "Story",
+      "order": "Order",
+      "image": "Image",
+      "servicePoint": "Service Point",
+      "services": "Services"
+    }
+  }
+}

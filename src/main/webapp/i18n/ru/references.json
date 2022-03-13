@@ -1,0 +1,26 @@
+{
+  "lawfirmApp": {
+    "references": {
+      "home": {
+        "title": "References",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый References",
+        "createOrEditLabel": "Создать или отредактировать References",
+        "notFound": "References не найдено"
+      },
+      "created": "Новый References создан с идентификатором {{ param }}",
+      "updated": "References обновлен с идентификатором {{ param }}",
+      "deleted": "References удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить References {{ id }}?"
+      },
+      "detail": {
+        "title": "References"
+      },
+      "id": "ID",
+      "name": "Name",
+      "order": "Order",
+      "image": "Image"
+    }
+  }
+}

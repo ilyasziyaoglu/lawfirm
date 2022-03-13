@@ -1,0 +1,90 @@
+<div>
+  <h2 id="page-heading" data-cy="ServicePointsHeading">
+    <span jhiTranslate="lawfirmApp.servicePoints.home.title">Service Points</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="lawfirmApp.servicePoints.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-service-points"
+        [routerLink]="['/service-points/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="lawfirmApp.servicePoints.home.createLabel"> Create a new Service Points </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="servicePoints?.length === 0">
+    <span jhiTranslate="lawfirmApp.servicePoints.home.notFound">No servicePoints found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="servicePoints && servicePoints.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="lawfirmApp.servicePoints.name">Name</span></th>
+          <th scope="col"><span jhiTranslate="lawfirmApp.servicePoints.email">Email</span></th>
+          <th scope="col"><span jhiTranslate="lawfirmApp.servicePoints.phone">Phone</span></th>
+          <th scope="col"><span jhiTranslate="lawfirmApp.servicePoints.address">Address</span></th>
+          <th scope="col"><span jhiTranslate="lawfirmApp.servicePoints.mapUrl">Map Url</span></th>
+          <th scope="col"><span jhiTranslate="lawfirmApp.servicePoints.latitude">Latitude</span></th>
+          <th scope="col"><span jhiTranslate="lawfirmApp.servicePoints.longitude">Longitude</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let servicePoints of servicePoints; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/service-points', servicePoints.id, 'view']">{{ servicePoints.id }}</a>
+          </td>
+          <td>{{ servicePoints.name }}</td>
+          <td>{{ servicePoints.email }}</td>
+          <td>{{ servicePoints.phone }}</td>
+          <td>{{ servicePoints.address }}</td>
+          <td>{{ servicePoints.mapUrl }}</td>
+          <td>{{ servicePoints.latitude }}</td>
+          <td>{{ servicePoints.longitude }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/service-points', servicePoints.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/service-points', servicePoints.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(servicePoints)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

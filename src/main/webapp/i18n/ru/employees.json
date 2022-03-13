@@ -1,0 +1,31 @@
+{
+  "lawfirmApp": {
+    "employees": {
+      "home": {
+        "title": "Employees",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Employees",
+        "createOrEditLabel": "Создать или отредактировать Employees",
+        "notFound": "Employees не найдено"
+      },
+      "created": "Новый Employees создан с идентификатором {{ param }}",
+      "updated": "Employees обновлен с идентификатором {{ param }}",
+      "deleted": "Employees удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Employees {{ id }}?"
+      },
+      "detail": {
+        "title": "Employees"
+      },
+      "id": "ID",
+      "name": "Name",
+      "surname": "Surname",
+      "title": "Title",
+      "story": "Story",
+      "order": "Order",
+      "image": "Image",
+      "servicePoint": "Service Point",
+      "services": "Services"
+    }
+  }
+}

@@ -7,6 +7,13 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Сущности",
+        "servicePoints": "Service Points",
+        "services": "Services",
+        "employees": "Employees",
+        "references": "References",
+        "jobApplications": "Job Applications",
+        "configs": "Configs",
+        "properties": "Properties",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

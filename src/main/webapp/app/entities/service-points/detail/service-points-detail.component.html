@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="servicePoints">
+      <h2 data-cy="servicePointsDetailsHeading"><span jhiTranslate="lawfirmApp.servicePoints.detail.title">Service Points</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ servicePoints.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.servicePoints.name">Name</span></dt>
+        <dd>
+          <span>{{ servicePoints.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.servicePoints.email">Email</span></dt>
+        <dd>
+          <span>{{ servicePoints.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.servicePoints.phone">Phone</span></dt>
+        <dd>
+          <span>{{ servicePoints.phone }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.servicePoints.address">Address</span></dt>
+        <dd>
+          <span>{{ servicePoints.address }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.servicePoints.mapUrl">Map Url</span></dt>
+        <dd>
+          <span>{{ servicePoints.mapUrl }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.servicePoints.latitude">Latitude</span></dt>
+        <dd>
+          <span>{{ servicePoints.latitude }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.servicePoints.longitude">Longitude</span></dt>
+        <dd>
+          <span>{{ servicePoints.longitude }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/service-points', servicePoints.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

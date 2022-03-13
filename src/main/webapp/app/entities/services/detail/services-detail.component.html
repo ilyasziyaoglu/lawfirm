@@ -1,0 +1,49 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="services">
+      <h2 data-cy="servicesDetailsHeading"><span jhiTranslate="lawfirmApp.services.detail.title">Services</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ services.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.services.title">Title</span></dt>
+        <dd>
+          <span>{{ services.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.services.description">Description</span></dt>
+        <dd>
+          <span>{{ services.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.services.order">Order</span></dt>
+        <dd>
+          <span>{{ services.order }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.services.icon">Icon</span></dt>
+        <dd>
+          <div *ngIf="services.icon">
+            <a (click)="openFile(services.icon, services.iconContentType)">
+              <img [src]="'data:' + services.iconContentType + ';base64,' + services.icon" style="max-width: 100%" alt="services image" />
+            </a>
+            {{ services.iconContentType }}, {{ byteSize(services.icon) }}
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/services', services.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

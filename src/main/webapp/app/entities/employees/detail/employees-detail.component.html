@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="employees">
+      <h2 data-cy="employeesDetailsHeading"><span jhiTranslate="lawfirmApp.employees.detail.title">Employees</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ employees.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.employees.name">Name</span></dt>
+        <dd>
+          <span>{{ employees.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.employees.surname">Surname</span></dt>
+        <dd>
+          <span>{{ employees.surname }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.employees.title">Title</span></dt>
+        <dd>
+          <span>{{ employees.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.employees.story">Story</span></dt>
+        <dd>
+          <span>{{ employees.story }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.employees.order">Order</span></dt>
+        <dd>
+          <span>{{ employees.order }}</span>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.employees.image">Image</span></dt>
+        <dd>
+          <div *ngIf="employees.image">
+            <a (click)="openFile(employees.image, employees.imageContentType)">
+              <img
+                [src]="'data:' + employees.imageContentType + ';base64,' + employees.image"
+                style="max-width: 100%"
+                alt="employees image"
+              />
+            </a>
+            {{ employees.imageContentType }}, {{ byteSize(employees.image) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.employees.servicePoint">Service Point</span></dt>
+        <dd>
+          <div *ngIf="employees.servicePoint">
+            <a [routerLink]="['/service-points', employees.servicePoint?.id, 'view']">{{ employees.servicePoint?.name }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="lawfirmApp.employees.services">Services</span></dt>
+        <dd>
+          <span *ngFor="let services of employees.services; let last = last">
+            <a [routerLink]="['/services', services?.id, 'view']">{{ services.title }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/employees', employees.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

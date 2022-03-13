@@ -1,0 +1,26 @@
+{
+  "lawfirmApp": {
+    "properties": {
+      "home": {
+        "title": "Properties",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Properties",
+        "createOrEditLabel": "Создать или отредактировать Properties",
+        "notFound": "Properties не найдено"
+      },
+      "created": "Новый Properties создан с идентификатором {{ param }}",
+      "updated": "Properties обновлен с идентификатором {{ param }}",
+      "deleted": "Properties удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Properties {{ id }}?"
+      },
+      "detail": {
+        "title": "Properties"
+      },
+      "id": "ID",
+      "key": "Key",
+      "value": "Value",
+      "language": "Language"
+    }
+  }
+}
