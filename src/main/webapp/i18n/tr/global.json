@@ -4,6 +4,11 @@
     "browsehappy": "<strong>Çok eski</strong> bir tarayıcı kullanıyorsunuz. Lütfen kullanım kalitenizi arttırmak için <a href=\"http://browsehappy.com/?locale=tr\">tarayıcınızı yükseltin</a>.",
     "menu": {
       "home": "Ana Sayfa",
+      "about": "Hakkımızda",
+      "services": "Hizmet Alanlarımız",
+      "team": "Ekibimiz",
+      "career": "Kariyer",
+      "contact": "İletişim",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Varlıklar",

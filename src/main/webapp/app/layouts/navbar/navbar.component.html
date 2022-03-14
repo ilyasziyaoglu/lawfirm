@@ -27,6 +27,46 @@
             </span>
           </a>
         </li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/about" (click)="collapseNavbar()">
+            <span>
+<!--              <fa-icon icon="about"></fa-icon>-->
+              <span jhiTranslate="global.menu.about">About Us</span>
+            </span>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/our-services" (click)="collapseNavbar()">
+            <span>
+<!--              <fa-icon icon="services"></fa-icon>-->
+              <span jhiTranslate="global.menu.services">Our Service Area</span>
+            </span>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/team" (click)="collapseNavbar()">
+            <span>
+<!--              <fa-icon icon="team"></fa-icon>-->
+              <span jhiTranslate="global.menu.team">Our Team</span>
+            </span>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/career" (click)="collapseNavbar()">
+            <span>
+<!--              <fa-icon icon="career"></fa-icon>-->
+              <span jhiTranslate="global.menu.career">Career</span>
+            </span>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/contact" (click)="collapseNavbar()">
+            <span>
+<!--              <fa-icon icon="contact"></fa-icon>-->
+              <span jhiTranslate="global.menu.contact">Contact Us</span>
+            </span>
+          </a>
+        </li>
         <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
         <li
           *ngSwitchCase="true"
@@ -105,6 +145,7 @@
             </li>
             <li>
               <a
+                *jhiHasAnyAuthority="'ROLE_ADMIN'"
                 class="dropdown-item"
                 routerLink="configs"
                 routerLinkActive="active"
@@ -204,6 +245,7 @@
           </ul>
         </li>
         <li
+          *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_USER']"
           ngbDropdown
           class="nav-item dropdown pointer"
           display="dynamic"

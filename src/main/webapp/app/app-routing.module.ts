@@ -1,12 +1,13 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { errorRoute } from './layouts/error/error.route';
-import { navbarRoute } from './layouts/navbar/navbar.route';
-import { DEBUG_INFO_ENABLED } from 'app/app.constants';
-import { Authority } from 'app/config/authority.constants';
+import {errorRoute} from './layouts/error/error.route';
+import {navbarRoute} from './layouts/navbar/navbar.route';
+import {DEBUG_INFO_ENABLED} from 'app/app.constants';
+import {Authority} from 'app/config/authority.constants';
+import {AboutComponent} from 'app/about/about.component';
 
-import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
+import {UserRouteAccessService} from 'app/core/auth/user-route-access.service';
 
 @NgModule({
   imports: [
@@ -19,6 +20,26 @@ import { UserRouteAccessService } from 'app/core/auth/user-route-access.service'
           },
           canActivate: [UserRouteAccessService],
           loadChildren: () => import('./admin/admin-routing.module').then(m => m.AdminRoutingModule),
+        },
+        {
+          path: 'about',
+          component: AboutComponent,
+        },
+        {
+          path: 'our-services',
+          loadChildren: () => import('./services/services.module').then(m => m.ServicesModule),
+        },
+        {
+          path: 'team',
+          loadChildren: () => import('./team/team.module').then(m => m.TeamModule),
+        },
+        {
+          path: 'career',
+          loadChildren: () => import('./career/career.module').then(m => m.CareerModule),
+        },
+        {
+          path: 'contact',
+          loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule),
         },
         {
           path: 'account',

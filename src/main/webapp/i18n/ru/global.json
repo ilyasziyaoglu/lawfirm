@@ -4,6 +4,11 @@
     "browsehappy": "Ваш браузер <strong>устарел</strong>. Пожалуйста <a href=\"http://browsehappy.com/?locale=ru\">обновите ваш браузер</a>.",
     "menu": {
       "home": "Главная",
+      "about": "О нас",
+      "services": "Сферы наших услуг",
+      "team": "Наша команда",
+      "career": "Карьера",
+      "contact": "Связаться с нами",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Сущности",

@@ -1,7 +1,8 @@
 package net.evercode.lawfirm.config;
 
-import net.evercode.lawfirm.security.*;
-import net.evercode.lawfirm.security.jwt.*;
+import net.evercode.lawfirm.security.AuthoritiesConstants;
+import net.evercode.lawfirm.security.jwt.JWTConfigurer;
+import net.evercode.lawfirm.security.jwt.TokenProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
@@ -91,6 +92,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/api/account/reset-password/init").permitAll()
             .antMatchers("/api/account/reset-password/finish").permitAll()
             .antMatchers("/api/admin/**").hasAuthority(AuthoritiesConstants.ADMIN)
+            .antMatchers("/api/configs/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .antMatchers("/api/**").authenticated()
             .antMatchers("/management/health").permitAll()
             .antMatchers("/management/health/**").permitAll()
