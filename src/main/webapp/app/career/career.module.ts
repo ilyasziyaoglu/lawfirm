@@ -3,15 +3,21 @@ import {CommonModule} from '@angular/common';
 
 import {CareerRoutingModule} from './career-routing.module';
 import {CareerComponent} from './career.component';
+import {MatTabsModule} from "@angular/material/tabs";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [
-    CareerComponent
+    CareerComponent,
   ],
   imports: [
     CommonModule,
-    CareerRoutingModule
+    CareerRoutingModule,
+    MatTabsModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
-export class CareerModule { }
+export class CareerModule {
+}

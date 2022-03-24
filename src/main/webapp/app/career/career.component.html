@@ -1,1 +1,118 @@
-<p>career works!</p>
+<h1 class="m-3" style="text-align: center; font-size: 5em;">Kariyer</h1>
+<hr class="my-4 mx-auto" style="width: 200px; display: block;">
+
+<div class="container">
+  <p class="text-center">Kulaçoğlu Hukuk Bürosu; çalışanlarına, iş alanlarına göre yapılandırılmış bir kariyer
+    sunmaktadır. Kulaçoğlu Hukuk Bürosu; çalışma alanlarının gerektirdiği kriterleri baz alarak, farklı deneyim
+    seviyelerindeki, azimli ve başarılı adayları işe almaktadır.</p>
+  <hr class="my-5">
+
+
+  <div class="row m-5">
+    <div class="col-sm-6">
+      <img class="hire-image" src="https://idenfit.com/blog/wp-content/uploads/2020/07/i%C5%9Fe-al%C4%B1mm@3x-1.png"
+           alt="İşe Alım">
+    </div>
+    <div class="col-sm-6">
+      <h2>İşe Alım</h2>
+      <p>İşe alım sürecimiz mülakat odaklı gerçekleşmektedir. Yeni mezunların yanısıra deneyimli adaylar
+        avukatlarımızla mülakata alınır ve nitelikleri değerlendirilmek üzere gözlemlenir.</p>
+      <p>Sonraki mülakatlara katılma hakkı kazanan adaylar, ortaklarımızla görüşme yapar. Adaylara, mülakat planının
+        oluşturulma aşamasında bildirdikleri taktirde, danışmak istedikleri konular veya soruları için görüşme
+        fırsatı tanınır.</p>
+      <p>Başvuruda bulunmak için özgeçmişlerinizi ön yazı ile birlikte,&nbsp;<a href="mailto:info@kulacoglu.av.tr">info@kulacoglu.av.tr</a>&nbsp;adresi
+        üzerinden irtibata geçebilirsiniz.</p>
+    </div>
+  </div>
+  <div class="row m-5">
+    <div class="col-sm-6">
+      <h2>Yasal Staj</h2>
+      <p>Stajyer Avukatlara mentor olarak atanan deneyimli Avukatlarımız,
+        stajyerlere, proje bazlı çalışmalar, davaya ilişkin dilekçeler, sözleşme yazımı, resmi dairelerde işlem
+        yapma gibi temel hukuk süreçlerinde destek olmakta, uygulamalı bilgi ve tecrübe paylaşımında
+        bulunmaktadırlar.</p>
+      <p>Stajyerlerimiz de haftalık çalışma raporları hazırlamakta olup, bu raporlar da
+        mentorları tarafından düzenli aralıklarla incelenerek değerlendirilmekte ve geri bildirimde
+        bulunulmaktadır.</p>
+      <p>Kulaçoğlu Hukuk Bürosu, değerlendirme süreci sonucunda seçtiği stajyer avukatlar
+        ile, kadro imkanları dahilinde olmak kaydı ile avukatlık ruhsatlarını almaları sonrasında çalışmayı ilke
+        edinmiştir.</p>
+      <p>Belirlenen kriterleri yerine getiren ve avukatlık ruhsatı almaya hak kazanan adaylar,
+        kariyer basamaklarında ilerleyerek yönetici Avukat olma imkanını elde etmektedirler.</p>
+    </div>
+    <div class="col-sm-6">
+      <img class="hire-image"
+           src="https://idenfit.com/blog/wp-content/uploads/2020/08/Varl%C4%B1k-10@2x-12.16.42-1024x958.png"
+           alt="İşe Alım">
+    </div>
+  </div>
+  <div class="row m-5">
+    <div class="col-sm-6">
+      <img class="hire-image"
+           src="https://idenfit.com/blog/wp-content/uploads/2021/04/geri-bildirim-nedir-yapici-geri-bildirim-nasil-yapilir@2x-1160x680.png"
+           alt="İşe Alım">
+    </div>
+    <div class="col-sm-6">
+      <h2>Yaz Stajı</h2>
+      <p>Yaz staj programımız, Türkiye’nin her noktasından üçüncü sınıftaki hukuk fakültesi öğrencilerinin
+        Kulaçoğlu Hukuk Bürosu&nbsp;’nda kariyer fırsatı elde etmesine olanak sağlamaktadır.</p>
+      <p>Yaz stajı
+        programına katılma hakkı kazanmış olan stajyerlerimiz, Kulaçoğlu Hukuk Bürosu avukatlarının üzerinde
+        çalıştığı başlıca davalar ve işlemlere dahil olma ve önemli uygulamalarda rol alma şansı
+        yakalamaktadır.Kulaçoğlu
+        Hukuk Bürosu’nun diğer&nbsp;çalışanları ve stajyerlerle rahatlıkla çalışabilmesi adına, stajyer adaylarında
+        güçlü
+        iletişim kabiliyeti ve yabancı dil bilgisi aranmaktadır.</p>
+    </div>
+  </div>
+  <hr>
+
+
+  <div class="my-5" style="width: 60%; display: block; margin: auto">
+    <h2 class="text-center my-5">Başvuru Formu</h2>
+    <form [formGroup]="applyForm" (submit)="applyForJob()">
+      <div class="row">
+        <div class="col">
+          <div class="form-group form-floating mb-3 border-secondary">
+            <input type="text" class="form-control" id="name" formControlName="name" placeholder="Kulaç">
+            <label for="name">Adınız</label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group form-floating mb-3 border-secondary">
+            <input type="text" class="form-control" id="surname" formControlName="surname" placeholder="Soyadınız">
+            <label for="surname">Soyadınız</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group form-floating mb-3 border-secondary">
+            <input type="email" class="form-control" id="email" formControlName="email"
+                   placeholder="E-posta adresiniz">
+            <label for="email">E-posta adresiniz</label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group form-floating mb-3 border-secondary">
+            <input type="text" class="form-control" id="phone" formControlName="phone" placeholder="Telefon">
+            <label for="phone">Telefon</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group form-floating mb-3 border-secondary">
+        <input type="text" class="form-control" id="area" formControlName="area" placeholder="Telefon">
+        <label for="area">Alan</label>
+      </div>
+      <div class="form-group mb-3 border-secondary">
+          <textarea class="form-control" id="message" formControlName="message" rows="4"
+                    placeholder="Mesajınız"></textarea>
+      </div>
+      <div class="form-group mb-3">
+        <label for="cv" class="form-label mt-4">Özgeçmiş</label>
+        <input class="form-control" type="file" id="cv" (change)="onFileChange($event)">
+      </div>
+      <button type="submit" class="btn btn-primary" style="display: block; margin: auto; width: 200px;" [disabled]="!applyForm.valid">Gönder</button>
+    </form>
+  </div>
+</div>

@@ -1,1 +1,15 @@
-<p>team works!</p>
+<div class="container">
+  <h1 class="m-3" style="text-align: center; font-size: 5em;">Ekibimiz</h1>
+  <hr class="my-4 mx-auto" style="width: 200px; display: block;">
+  <div class="row mt-3 py-3 px-0 d-flex justify-content-around">
+    <div class="col py-5" *ngFor="let teamMember of teamMembers">
+      <div class="border-secondary rounded-circle overflow-hidden d-block mx-auto" style="width: 300px; height: 300px;">
+        <img class="mx-auto d-block" style="width: 300px;" [src]="'data:' + teamMember.imageContentType + ';base64,' + teamMember.image" [alt]="teamMember.name">
+      </div>
+      <div class="w-100 text-center">
+        <p class="mt-3 card-title" style="font-size: 1.5em;">{{teamMember.name}} {{teamMember.surname}}</p>
+        <p class="mt-3 card-subtitle text-muted">{{teamMember.title}}</p>
+      </div>
+    </div>
+  </div>
+</div>
