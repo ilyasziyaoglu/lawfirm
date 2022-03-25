@@ -1,9 +1,10 @@
 <nav data-cy="navbar" class="navbar navbar-dark navbar-expand-md bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
-      <span class="logo-img"></span>
-      <span jhiTranslate="global.title" class="navbar-title">Lawfirm</span>
-      <span class="navbar-version">{{ version }}</span>
+      <img style="width: 130px;" src="https://kulacoglu.av.tr/wp-content/uploads/2019/07/Kulacoglu-Hukuk-Beyax-Logo.png" alt="Lawfirm">
+<!--      <span class="logo-img"></span>-->
+<!--      <span jhiTranslate="global.title" class="navbar-title">Lawfirm</span>-->
+<!--      <span class="navbar-version">{{ version }}</span>-->
     </a>
     <a
       class="navbar-toggler d-lg-none"
@@ -30,7 +31,6 @@
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <a class="nav-link" routerLink="/about" (click)="collapseNavbar()">
             <span>
-<!--              <fa-icon icon="about"></fa-icon>-->
               <span jhiTranslate="global.menu.about">About Us</span>
             </span>
           </a>
@@ -38,7 +38,6 @@
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <a class="nav-link" routerLink="/our-services" (click)="collapseNavbar()">
             <span>
-<!--              <fa-icon icon="services"></fa-icon>-->
               <span jhiTranslate="global.menu.services">Our Service Area</span>
             </span>
           </a>
@@ -46,7 +45,6 @@
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <a class="nav-link" routerLink="/team" (click)="collapseNavbar()">
             <span>
-<!--              <fa-icon icon="team"></fa-icon>-->
               <span jhiTranslate="global.menu.team">Our Team</span>
             </span>
           </a>
@@ -54,7 +52,6 @@
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <a class="nav-link" routerLink="/career" (click)="collapseNavbar()">
             <span>
-<!--              <fa-icon icon="career"></fa-icon>-->
               <span jhiTranslate="global.menu.career">Career</span>
             </span>
           </a>
@@ -62,7 +59,6 @@
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <a class="nav-link" routerLink="/contact" (click)="collapseNavbar()">
             <span>
-<!--              <fa-icon icon="contact"></fa-icon>-->
               <span jhiTranslate="global.menu.contact">Contact Us</span>
             </span>
           </a>
