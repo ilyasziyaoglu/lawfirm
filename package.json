@@ -32,7 +32,7 @@
     "docker:db:up": "docker-compose -f src/main/docker/postgresql.yml up -d",
     "docker:jhipster-registry:down": "docker-compose -f src/main/docker/jhipster-registry.yml down -v --remove-orphans",
     "docker:jhipster-registry:up": "docker-compose -f src/main/docker/jhipster-registry.yml up -d",
-    "docker:others:await": "echo \"Waiting for jhipster-registry to start\" && wait-on -t 180000 http-get://localhost:8761/management/health && echo \"jhipster-registry started\"",
+    "docker:others:await": "echo \"Waiting for jhipster-registry to start\" && wait-on -t 180000 http-get://172.20.0.2:8761/management/health && echo \"jhipster-registry started\"",
     "docker:others:down": "npm run docker:jhipster-registry:down",
     "predocker:others:up": "",
     "docker:others:up": "npm run docker:jhipster-registry:up",

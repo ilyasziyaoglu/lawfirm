@@ -124,12 +124,26 @@ docker-compose -f src/main/docker/jhipster-control-center.yml up
 To build the final jar and optimize the lawfirm application for production, run:
 
 ```
-./mvnw -Pprod clean verify
+./mvnw package -Pprod verify -DskipTests jib:dockerBuild --offline
 ```
 
 This will concatenate and minify the client CSS and JavaScript files. It will also modify `index.html` so it references these new files.
 To ensure everything worked, run:
 
+```
+docker-compose -f src/main/docker/app.yml up
+```
+
+Create lawfirm docker network and connect the containers to it:
+```
+docker network create lawfirm-network
+
+docker network connect lawfirm-network docker_jhipster-registry_1 --ip --ip 10.10.36.120
+docker network connect lawfirm-network docker_lawfirm-postgresql_1 --ip --ip 10.10.36.121
+docker network connect lawfirm-network docker_lawfirm-app_1 --ip 10.10.36.122
+```
+
+You can run locally the application with the following command:
 ```
 java -jar target/*.jar
 ```
