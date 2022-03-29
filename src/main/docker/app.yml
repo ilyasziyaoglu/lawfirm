@@ -1,5 +1,5 @@
 # This configuration is intended for development purpose, it's **your** responsibility to harden it for production
-version: '3.8'
+version: '3.3'
 services:
   lawfirm-app:
     image: lawfirm
@@ -9,8 +9,8 @@ services:
       - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
       - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@172.20.0.2:8761/eureka
       - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@172.20.0.2:8761/config
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://lawfirm-postgresql:5432/lawfirm
-      - SPRING_LIQUIBASE_URL=jdbc:postgresql://lawfirm-postgresql:5432/lawfirm
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://172.20.0.3:5432/lawfirm
+      - SPRING_LIQUIBASE_URL=jdbc:postgresql://172.20.0.3:5432/lawfirm
       - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
     # If you want to expose these ports outside your dev PC,
     # remove the "127.0.0.1:" prefix
