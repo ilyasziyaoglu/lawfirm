@@ -18,7 +18,7 @@ services:
     # If you want to expose these ports outside your dev PC,
     # remove the "127.0.0.1:" prefix
     ports:
-      - 127.0.0.1:8080:8080
+      - 8080:8080
   lawfirm-postgresql:
     depends_on:
       - jhipster-registry
@@ -32,7 +32,7 @@ services:
     # If you want to expose these ports outside your dev PC,
     # remove the "127.0.0.1:" prefix
     ports:
-      - 127.0.0.1:5432:5432
+      - 5432:5432
   jhipster-registry:
     image: jhipster/jhipster-registry:v7.3.0
     volumes:
@@ -55,4 +55,4 @@ services:
     # If you want to expose these ports outside your dev PC,
     # remove the "127.0.0.1:" prefix
     ports:
-      - 127.0.0.1:8761:8761
+      - 8761:8761
