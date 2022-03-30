@@ -148,7 +148,7 @@ You can run locally the application with the following command:
 java -jar target/*.jar
 ```
 
-Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
+Then navigate to [http://localhost:80](http://localhost:80) in your browser.
 
 Refer to [Using JHipster in production][] for more details.
 

@@ -1,8 +1,8 @@
-import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {TestBed} from '@angular/core/testing';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
-import { ConfigurationService } from './configuration.service';
-import { Bean, ConfigProps, Env, PropertySource } from './configuration.model';
+import {ConfigurationService} from './configuration.service';
+import {Bean, ConfigProps, Env, PropertySource} from './configuration.model';
 
 describe('Logs Service', () => {
   let service: ConfigurationService;
@@ -55,7 +55,7 @@ describe('Logs Service', () => {
           name: 'server.ports',
           properties: {
             'local.server.port': {
-              value: '8080',
+              value: '80',
             },
           },
         },

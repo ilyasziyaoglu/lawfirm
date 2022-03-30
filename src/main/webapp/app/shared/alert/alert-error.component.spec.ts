@@ -1,11 +1,11 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { TranslateModule } from '@ngx-translate/core';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {TranslateModule} from '@ngx-translate/core';
 
-import { EventManager } from 'app/core/util/event-manager.service';
-import { Alert, AlertService } from 'app/core/util/alert.service';
+import {EventManager} from 'app/core/util/event-manager.service';
+import {Alert, AlertService} from 'app/core/util/alert.service';
 
-import { AlertErrorComponent } from './alert-error.component';
+import {AlertErrorComponent} from './alert-error.component';
 
 describe('Alert Error Component', () => {
   let comp: AlertErrorComponent;
@@ -68,7 +68,7 @@ describe('Alert Error Component', () => {
     it('Should display an alert on status 400 for generic error', () => {
       // GIVEN
       const response = new HttpErrorResponse({
-        url: 'http://localhost:8080/api/foos',
+        url: 'http://localhost:80/api/foos',
         headers: new HttpHeaders(),
         status: 400,
         statusText: 'Bad Request',
@@ -89,7 +89,7 @@ describe('Alert Error Component', () => {
     it('Should display an alert on status 400 for generic error without message', () => {
       // GIVEN
       const response = new HttpErrorResponse({
-        url: 'http://localhost:8080/api/foos',
+        url: 'http://localhost:80/api/foos',
         headers: new HttpHeaders(),
         status: 400,
         error: 'Bad Request',
@@ -103,7 +103,7 @@ describe('Alert Error Component', () => {
     it('Should display an alert on status 400 for invalid parameters', () => {
       // GIVEN
       const response = new HttpErrorResponse({
-        url: 'http://localhost:8080/api/foos',
+        url: 'http://localhost:80/api/foos',
         headers: new HttpHeaders(),
         status: 400,
         statusText: 'Bad Request',
@@ -125,7 +125,7 @@ describe('Alert Error Component', () => {
     it('Should display an alert on status 400 for error headers', () => {
       // GIVEN
       const response = new HttpErrorResponse({
-        url: 'http://localhost:8080/api/foos',
+        url: 'http://localhost:80/api/foos',
         headers: new HttpHeaders().append('app-error', 'Error Message').append('app-params', 'foo'),
         status: 400,
         statusText: 'Bad Request',
@@ -143,7 +143,7 @@ describe('Alert Error Component', () => {
     it('Should display an alert on status 500 with detail', () => {
       // GIVEN
       const response = new HttpErrorResponse({
-        url: 'http://localhost:8080/api/foos',
+        url: 'http://localhost:80/api/foos',
         headers: new HttpHeaders(),
         status: 500,
         statusText: 'Internal server error',

@@ -1,10 +1,10 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { of } from 'rxjs';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {of} from 'rxjs';
 
-import { ConfigurationComponent } from './configuration.component';
-import { ConfigurationService } from './configuration.service';
-import { Bean, PropertySource } from './configuration.model';
+import {ConfigurationComponent} from './configuration.component';
+import {ConfigurationService} from './configuration.service';
+import {Bean, PropertySource} from './configuration.model';
 
 describe('ConfigurationComponent', () => {
   let comp: ConfigurationComponent;
@@ -47,7 +47,7 @@ describe('ConfigurationComponent', () => {
           name: 'server.ports',
           properties: {
             'local.server.port': {
-              value: '8080',
+              value: '80',
             },
           },
         },
