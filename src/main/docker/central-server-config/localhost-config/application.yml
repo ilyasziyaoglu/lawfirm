@@ -10,7 +10,3 @@ jhipster:
         # secret key which should be base64 encoded and changed in production
         base64-secret: Y2NmYTkwODgyODQ0NWRhNzE0NmE0NThjMzM5YTFlMTVlZTNlZjIzMDBjZmNmNTEyZGY1ZTAxZWE3NDQxM2YzMzI0OGY4ZDk1ZDBhOWEwOGE1ZTllYjQ1NDM1ZWFjMjc0NmRhOThkNjdhMTcwZTU3ZTkzMTk0ZjRmNTQyMDUyZmI=
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://admin:${jhipster.registry.password}@172.20.0.2:8761/eureka/
