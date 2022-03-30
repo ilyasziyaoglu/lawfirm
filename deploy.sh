@@ -15,3 +15,4 @@ docker network connect --ip 172.20.0.3 lawfirm-network docker_lawfirm-postgresql
 docker network connect --ip 172.20.0.4 lawfirm-network docker_lawfirm-app_1
 
 docker network inspect lawfirm-network
+
