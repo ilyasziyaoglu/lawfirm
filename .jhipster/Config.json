@@ -14,7 +14,7 @@
     }
   ],
   "jpaMetamodelFiltering": true,
-  "name": "Configs",
+  "name": "Config",
   "pagination": "infinite-scroll",
   "readOnly": false,
   "relationships": [],

@@ -38,7 +38,8 @@ public class EmployeesService {
      */
     public Employees save(Employees employees) {
         log.debug("Request to save Employees : {}", employees);
-        fileUtils.saveFile(employees.getImage(), "images", employees.getImageContentType());
+        String imageFileName = fileUtils.saveFile(employees.getImage(), "images", employees.getImageContentType());
+        employees.setImageName(imageFileName);
         return employeesRepository.save(employees);
     }
 
@@ -70,8 +71,8 @@ public class EmployeesService {
                     existingEmployees.setOrder(employees.getOrder());
                 }
                 if (employees.getImage() != null) {
-                    // TODO: implement also image upload
-                    existingEmployees.setImage(employees.getImage());
+                    String imageFileName = fileUtils.updateFile(employees.getImage(), employees.getImageContentType(), existingEmployees.getImageName(), "images");
+                    existingEmployees.setImageName(imageFileName);
                 }
                 if (employees.getImageContentType() != null) {
                     existingEmployees.setImageContentType(employees.getImageContentType());
@@ -121,8 +122,8 @@ public class EmployeesService {
      */
     public void delete(Long id) {
         log.debug("Request to delete Employees : {}", id);
-        employeesRepository.findTopById(id).ifPresent(employees -> {
-            // TODO: delete also image file
+        employeesRepository.findById(id).ifPresent(employees -> {
+            fileUtils.deleteFile(employees.getImageName(), "images");
             employeesRepository.deleteById(id);
         });
     }

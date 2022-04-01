@@ -2,8 +2,8 @@ package net.evercode.lawfirm.service;
 
 import net.evercode.lawfirm.domain.Config;
 import net.evercode.lawfirm.domain.Config_;
-import net.evercode.lawfirm.repository.ConfigsRepository;
-import net.evercode.lawfirm.service.criteria.ConfigsCriteria;
+import net.evercode.lawfirm.repository.ConfigRepository;
+import net.evercode.lawfirm.service.criteria.ConfigCriteria;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -17,20 +17,20 @@ import java.util.List;
 
 /**
  * Service for executing complex queries for {@link Config} entities in the database.
- * The main input is a {@link ConfigsCriteria} which gets converted to {@link Specification},
+ * The main input is a {@link ConfigCriteria} which gets converted to {@link Specification},
  * in a way that all the filters must apply.
  * It returns a {@link List} of {@link Config} or a {@link Page} of {@link Config} which fulfills the criteria.
  */
 @Service
 @Transactional(readOnly = true)
-public class ConfigsQueryService extends QueryService<Config> {
+public class ConfigQueryService extends QueryService<Config> {
 
-    private final Logger log = LoggerFactory.getLogger(ConfigsQueryService.class);
+    private final Logger log = LoggerFactory.getLogger(ConfigQueryService.class);
 
-    private final ConfigsRepository configsRepository;
+    private final ConfigRepository configRepository;
 
-    public ConfigsQueryService(ConfigsRepository configsRepository) {
-        this.configsRepository = configsRepository;
+    public ConfigQueryService(ConfigRepository configRepository) {
+        this.configRepository = configRepository;
     }
 
     /**
@@ -39,10 +39,10 @@ public class ConfigsQueryService extends QueryService<Config> {
      * @return the matching entities.
      */
     @Transactional(readOnly = true)
-    public List<Config> findByCriteria(ConfigsCriteria criteria) {
+    public List<Config> findByCriteria(ConfigCriteria criteria) {
         log.debug("find by criteria : {}", criteria);
         final Specification<Config> specification = createSpecification(criteria);
-        return configsRepository.findAll(specification);
+        return configRepository.findAll(specification);
     }
 
     /**
@@ -52,10 +52,10 @@ public class ConfigsQueryService extends QueryService<Config> {
      * @return the matching entities.
      */
     @Transactional(readOnly = true)
-    public Page<Config> findByCriteria(ConfigsCriteria criteria, Pageable page) {
+    public Page<Config> findByCriteria(ConfigCriteria criteria, Pageable page) {
         log.debug("find by criteria : {}, page: {}", criteria, page);
         final Specification<Config> specification = createSpecification(criteria);
-        return configsRepository.findAll(specification, page);
+        return configRepository.findAll(specification, page);
     }
 
     /**
@@ -64,18 +64,18 @@ public class ConfigsQueryService extends QueryService<Config> {
      * @return the number of matching entities.
      */
     @Transactional(readOnly = true)
-    public long countByCriteria(ConfigsCriteria criteria) {
+    public long countByCriteria(ConfigCriteria criteria) {
         log.debug("count by criteria : {}", criteria);
         final Specification<Config> specification = createSpecification(criteria);
-        return configsRepository.count(specification);
+        return configRepository.count(specification);
     }
 
     /**
-     * Function to convert {@link ConfigsCriteria} to a {@link Specification}
+     * Function to convert {@link ConfigCriteria} to a {@link Specification}
      * @param criteria The object which holds all the filters, which the entities should match.
      * @return the matching {@link Specification} of the entity.
      */
-    protected Specification<Config> createSpecification(ConfigsCriteria criteria) {
+    protected Specification<Config> createSpecification(ConfigCriteria criteria) {
         Specification<Config> specification = Specification.where(null);
         if (criteria != null) {
             // This has to be called first, because the distinct method returns null

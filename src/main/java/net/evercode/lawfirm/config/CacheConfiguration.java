@@ -61,6 +61,7 @@ public class CacheConfiguration {
             createCache(cm, net.evercode.lawfirm.domain.JobApplications.class.getName());
             createCache(cm, Config.class.getName());
             createCache(cm, net.evercode.lawfirm.domain.Properties.class.getName());
+            createCache(cm, net.evercode.lawfirm.domain.Config.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

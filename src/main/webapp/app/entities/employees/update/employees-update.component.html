@@ -117,6 +117,12 @@
           <label class="form-label" jhiTranslate="lawfirmApp.employees.image" for="field_image">Image</label>
           <div>
             <img
+              [src]="IMAGE_PATH + editForm.get('imageName')!.value"
+              style="max-height: 100px"
+              *ngIf="editForm.get('imageName')!.value && !editForm.get('image')!.value"
+              alt="employees image"
+            />
+            <img
               [src]="'data:' + editForm.get('imageContentType')!.value + ';base64,' + editForm.get('image')!.value"
               style="max-height: 100px"
               *ngIf="editForm.get('image')!.value"

@@ -1,0 +1,25 @@
+{
+  "lawfirmApp": {
+    "config": {
+      "home": {
+        "title": "Configs",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Config",
+        "createOrEditLabel": "Создать или отредактировать Config",
+        "notFound": "Configs не найдено"
+      },
+      "created": "Новый Config создан с идентификатором {{ param }}",
+      "updated": "Config обновлен с идентификатором {{ param }}",
+      "deleted": "Config удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Config {{ id }}?"
+      },
+      "detail": {
+        "title": "Config"
+      },
+      "id": "ID",
+      "key": "Key",
+      "value": "Value"
+    }
+  }
+}

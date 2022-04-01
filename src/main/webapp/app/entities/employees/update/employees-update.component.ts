@@ -14,12 +14,14 @@ import {IServicePoints} from 'app/entities/service-points/service-points.model';
 import {ServicePointsService} from 'app/entities/service-points/service/service-points.service';
 import {IServices} from 'app/entities/services/services.model';
 import {ServicesService} from 'app/entities/services/service/services.service';
+import {IMAGE_PATH} from 'app/app.constants';
 
 @Component({
   selector: 'jhi-employees-update',
   templateUrl: './employees-update.component.html',
 })
 export class EmployeesUpdateComponent implements OnInit {
+  IMAGE_PATH = IMAGE_PATH;
   isSaving = false;
 
   servicePointsSharedCollection: IServicePoints[] = [];
@@ -32,6 +34,7 @@ export class EmployeesUpdateComponent implements OnInit {
     title: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
     story: [],
     order: [null, [Validators.required]],
+    imageName: [null, [Validators.required]],
     image: [null, [Validators.required]],
     imageContentType: [],
     servicePoint: [],
@@ -142,6 +145,7 @@ export class EmployeesUpdateComponent implements OnInit {
       title: employees.title,
       story: employees.story,
       order: employees.order,
+      imageName: employees.imageName,
       image: employees.image,
       imageContentType: employees.imageContentType,
       servicePoint: employees.servicePoint,
@@ -189,6 +193,7 @@ export class EmployeesUpdateComponent implements OnInit {
       title: this.editForm.get(['title'])!.value,
       story: this.editForm.get(['story'])!.value,
       order: this.editForm.get(['order'])!.value,
+      imageName: this.editForm.get(['imageName'])!.value,
       imageContentType: this.editForm.get(['imageContentType'])!.value,
       image: this.editForm.get(['image'])!.value,
       servicePoint: this.editForm.get(['servicePoint'])!.value,

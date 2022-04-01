@@ -4,7 +4,7 @@
   <div class="row mt-3 py-3 px-0 d-flex justify-content-around">
     <div class="col py-5" *ngFor="let teamMember of teamMembers">
       <div class="border-secondary rounded-circle overflow-hidden d-block mx-auto" style="width: 300px; height: 300px;">
-        <img class="mx-auto d-block" style="width: 300px;" [src]="'data:' + teamMember.imageContentType + ';base64,' + teamMember.image" [alt]="teamMember.name">
+        <img class="mx-auto d-block" style="width: 300px;" [src]="IMAGE_PATH + teamMember.imageName" [alt]="teamMember.name">
       </div>
       <div class="w-100 text-center">
         <p class="mt-3 card-title" style="font-size: 1.5em;">{{teamMember.name}} {{teamMember.surname}}</p>

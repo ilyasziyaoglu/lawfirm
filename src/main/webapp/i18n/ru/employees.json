@@ -23,6 +23,7 @@
       "title": "Title",
       "story": "Story",
       "order": "Order",
+      "imageName": "Image Name",
       "image": "Image",
       "servicePoint": "Service Point",
       "services": "Services"

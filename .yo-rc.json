@@ -19,7 +19,7 @@
     "enableHibernateCache": true,
     "enableSwaggerCodegen": true,
     "enableTranslation": true,
-    "entities": ["ServicePoints", "Services", "Employees", "References", "JobApplications", "Configs", "Properties"],
+    "entities": ["Employees", "ServicePoints", "Services", "References", "JobApplications", "Config", "Properties"],
     "entitySuffix": "",
     "jhiPrefix": "jhi",
     "jhipsterVersion": "7.7.0",

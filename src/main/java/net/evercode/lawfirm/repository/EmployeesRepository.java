@@ -18,9 +18,6 @@ import java.util.Optional;
 @Repository
 public interface EmployeesRepository
     extends EmployeesRepositoryWithBagRelationships, JpaRepository<Employees, Long>, JpaSpecificationExecutor<Employees> {
-
-    Optional<Employees> findTopById(Long id);
-
     default Optional<Employees> findOneWithEagerRelationships(Long id) {
         return this.fetchBagRelationships(this.findOneWithToOneRelationships(id));
     }

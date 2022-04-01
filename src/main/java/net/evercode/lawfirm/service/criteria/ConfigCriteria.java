@@ -1,6 +1,5 @@
 package net.evercode.lawfirm.service.criteria;
 
-import net.evercode.lawfirm.domain.Config;
 import org.springdoc.api.annotations.ParameterObject;
 import tech.jhipster.service.Criteria;
 import tech.jhipster.service.filter.Filter;
@@ -11,8 +10,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * Criteria class for the {@link Config} entity. This class is used
- * in {@link net.evercode.lawfirm.web.rest.ConfigsResource} to receive all the possible filtering options from
+ * Criteria class for the {@link net.evercode.lawfirm.domain.Config} entity. This class is used
+ * in {@link net.evercode.lawfirm.web.rest.ConfigResource} to receive all the possible filtering options from
  * the Http GET request parameters.
  * For example the following could be a valid request:
  * {@code /configs?id.greaterThan=5&attr1.contains=something&attr2.specified=false}
@@ -20,7 +19,7 @@ import java.util.Objects;
  * fix type specific filters.
  */
 @ParameterObject
-public class ConfigsCriteria implements Serializable, Criteria {
+public class ConfigCriteria implements Serializable, Criteria {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,9 +31,9 @@ public class ConfigsCriteria implements Serializable, Criteria {
 
     private Boolean distinct;
 
-    public ConfigsCriteria() {}
+    public ConfigCriteria() {}
 
-    public ConfigsCriteria(ConfigsCriteria other) {
+    public ConfigCriteria(ConfigCriteria other) {
         this.id = other.id == null ? null : other.id.copy();
         this.key = other.key == null ? null : other.key.copy();
         this.value = other.value == null ? null : other.value.copy();
@@ -42,8 +41,8 @@ public class ConfigsCriteria implements Serializable, Criteria {
     }
 
     @Override
-    public ConfigsCriteria copy() {
-        return new ConfigsCriteria(this);
+    public ConfigCriteria copy() {
+        return new ConfigCriteria(this);
     }
 
     public LongFilter getId() {
@@ -107,7 +106,7 @@ public class ConfigsCriteria implements Serializable, Criteria {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        final ConfigsCriteria that = (ConfigsCriteria) o;
+        final ConfigCriteria that = (ConfigCriteria) o;
         return (
             Objects.equals(id, that.id) &&
             Objects.equals(key, that.key) &&
@@ -124,7 +123,7 @@ public class ConfigsCriteria implements Serializable, Criteria {
     // prettier-ignore
     @Override
     public String toString() {
-        return "ConfigsCriteria{" +
+        return "ConfigCriteria{" +
             (id != null ? "id=" + id + ", " : "") +
             (key != null ? "key=" + key + ", " : "") +
             (value != null ? "value=" + value + ", " : "") +

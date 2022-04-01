@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpResponse} from "@angular/common/http";
 import {IEmployees} from "../entities/employees/employees.model";
 import {EmployeesService} from "../entities/employees/service/employees.service";
+import {IMAGE_PATH} from "../app.constants";
 
 @Component({
   selector: 'jhi-team',
@@ -9,6 +10,7 @@ import {EmployeesService} from "../entities/employees/service/employees.service"
   styleUrls: ['./team.component.scss']
 })
 export class TeamComponent  implements OnInit {
+  IMAGE_PATH = IMAGE_PATH;
   teamMembers: IEmployees[] | null = [];
 
   constructor(

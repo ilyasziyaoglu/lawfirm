@@ -8,8 +8,9 @@ export interface IEmployees {
   title?: string;
   story?: string | null;
   order?: number;
-  imageContentType?: string;
+  imageName?: string;
   image?: string;
+  imageContentType?: string;
   servicePoint?: IServicePoints | null;
   services?: IServices[] | null;
 }
@@ -22,6 +23,7 @@ export class Employees implements IEmployees {
     public title?: string,
     public story?: string | null,
     public order?: number,
+    public imageName?: string,
     public imageContentType?: string,
     public image?: string,
     public servicePoint?: IServicePoints | null,

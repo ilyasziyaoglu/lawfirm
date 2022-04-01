@@ -36,6 +36,8 @@ public class EmployeesCriteria implements Serializable, Criteria {
 
     private IntegerFilter order;
 
+    private StringFilter imageName;
+
     private LongFilter servicePointId;
 
     private LongFilter servicesId;
@@ -51,6 +53,7 @@ public class EmployeesCriteria implements Serializable, Criteria {
         this.title = other.title == null ? null : other.title.copy();
         this.story = other.story == null ? null : other.story.copy();
         this.order = other.order == null ? null : other.order.copy();
+        this.imageName = other.imageName == null ? null : other.imageName.copy();
         this.servicePointId = other.servicePointId == null ? null : other.servicePointId.copy();
         this.servicesId = other.servicesId == null ? null : other.servicesId.copy();
         this.distinct = other.distinct;
@@ -151,6 +154,21 @@ public class EmployeesCriteria implements Serializable, Criteria {
         this.order = order;
     }
 
+    public StringFilter getImageName() {
+        return imageName;
+    }
+
+    public StringFilter imageName() {
+        if (imageName == null) {
+            imageName = new StringFilter();
+        }
+        return imageName;
+    }
+
+    public void setImageName(StringFilter imageName) {
+        this.imageName = imageName;
+    }
+
     public LongFilter getServicePointId() {
         return servicePointId;
     }
@@ -205,6 +223,7 @@ public class EmployeesCriteria implements Serializable, Criteria {
             Objects.equals(title, that.title) &&
             Objects.equals(story, that.story) &&
             Objects.equals(order, that.order) &&
+            Objects.equals(imageName, that.imageName) &&
             Objects.equals(servicePointId, that.servicePointId) &&
             Objects.equals(servicesId, that.servicesId) &&
             Objects.equals(distinct, that.distinct)
@@ -213,7 +232,7 @@ public class EmployeesCriteria implements Serializable, Criteria {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, title, story, order, servicePointId, servicesId, distinct);
+        return Objects.hash(id, name, surname, title, story, order, imageName, servicePointId, servicesId, distinct);
     }
 
     // prettier-ignore
@@ -226,6 +245,7 @@ public class EmployeesCriteria implements Serializable, Criteria {
             (title != null ? "title=" + title + ", " : "") +
             (story != null ? "story=" + story + ", " : "") +
             (order != null ? "order=" + order + ", " : "") +
+            (imageName != null ? "imageName=" + imageName + ", " : "") +
             (servicePointId != null ? "servicePointId=" + servicePointId + ", " : "") +
             (servicesId != null ? "servicesId=" + servicesId + ", " : "") +
             (distinct != null ? "distinct=" + distinct + ", " : "") +

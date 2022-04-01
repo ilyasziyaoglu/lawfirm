@@ -38,6 +38,7 @@
           <th scope="col"><span jhiTranslate="lawfirmApp.employees.title">Title</span></th>
           <th scope="col"><span jhiTranslate="lawfirmApp.employees.story">Story</span></th>
           <th scope="col"><span jhiTranslate="lawfirmApp.employees.order">Order</span></th>
+          <th scope="col"><span jhiTranslate="lawfirmApp.employees.imageName">Image Name</span></th>
           <th scope="col"><span jhiTranslate="lawfirmApp.employees.image">Image</span></th>
           <th scope="col"><span jhiTranslate="lawfirmApp.employees.servicePoint">Service Point</span></th>
           <th scope="col"><span jhiTranslate="lawfirmApp.employees.services">Services</span></th>
@@ -54,15 +55,15 @@
           <td>{{ employees.title }}</td>
           <td>{{ employees.story }}</td>
           <td>{{ employees.order }}</td>
+          <td>{{ employees.imageName }}</td>
           <td>
-            <a *ngIf="employees.image" (click)="openFile(employees.image, employees.imageContentType)">
+            <a *ngIf="employees.imageName">
               <img
-                [src]="'data:' + employees.imageContentType + ';base64,' + employees.image"
+                [src]="IMAGE_PATH + employees.imageName"
                 style="max-height: 30px"
                 alt="employees image"
               />
             </a>
-            <span *ngIf="employees.image">{{ employees.imageContentType }}, {{ byteSize(employees.image) }}</span>
           </td>
           <td>
             <div *ngIf="employees.servicePoint">

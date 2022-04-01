@@ -6,12 +6,14 @@ import {IEmployees} from '../employees.model';
 import {EmployeesService} from '../service/employees.service';
 import {EmployeesDeleteDialogComponent} from '../delete/employees-delete-dialog.component';
 import {DataUtils} from 'app/core/util/data-util.service';
+import {IMAGE_PATH} from "app/app.constants";
 
 @Component({
   selector: 'jhi-employees',
   templateUrl: './employees.component.html',
 })
 export class EmployeesComponent implements OnInit {
+  IMAGE_PATH = IMAGE_PATH;
   employees?: IEmployees[];
   isLoading = false;
 

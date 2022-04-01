@@ -39,6 +39,11 @@ import {RouterModule} from '@angular/router';
         data: { pageTitle: 'lawfirmApp.properties.home.title' },
         loadChildren: () => import('./properties/properties.module').then(m => m.PropertiesModule),
       },
+      {
+        path: 'config',
+        data: { pageTitle: 'lawfirmApp.config.home.title' },
+        loadChildren: () => import('./config/config.module').then(m => m.ConfigModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

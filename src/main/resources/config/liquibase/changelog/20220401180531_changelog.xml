@@ -1,0 +1,41 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="macbook (generated)" id="1648836347901-2">
+        <dropForeignKeyConstraint baseTableName="employees" constraintName="fk_employees__service_point_id"/>
+    </changeSet>
+    <changeSet author="macbook (generated)" id="1648836347901-3">
+        <dropForeignKeyConstraint baseTableName="rel_employees__services" constraintName="fk_rel_employees__services__employees_id"/>
+    </changeSet>
+    <changeSet author="macbook (generated)" id="1648836347901-4">
+        <dropForeignKeyConstraint baseTableName="rel_employees__services" constraintName="fk_rel_employees__services__services_id"/>
+    </changeSet>
+    <changeSet author="macbook (generated)" id="1648836347901-5">
+        <dropTable tableName="configs"/>
+    </changeSet>
+    <changeSet author="macbook (generated)" id="1648836347901-6">
+        <dropTable tableName="employees"/>
+    </changeSet>
+    <changeSet author="macbook (generated)" id="1648836347901-7">
+        <dropTable tableName="jhi_references"/>
+    </changeSet>
+    <changeSet author="macbook (generated)" id="1648836347901-8">
+        <dropTable tableName="job_applications"/>
+    </changeSet>
+    <changeSet author="macbook (generated)" id="1648836347901-9">
+        <dropTable tableName="properties"/>
+    </changeSet>
+    <changeSet author="macbook (generated)" id="1648836347901-10">
+        <dropTable tableName="rel_employees__services"/>
+    </changeSet>
+    <changeSet author="macbook (generated)" id="1648836347901-11">
+        <dropTable tableName="service_points"/>
+    </changeSet>
+    <changeSet author="macbook (generated)" id="1648836347901-12">
+        <dropTable tableName="services"/>
+    </changeSet>
+    <changeSet author="macbook (generated)" id="1648836347901-1">
+        <alterSequence sequenceName="sequence_generator"/>
+    </changeSet>
+</databaseChangeLog>

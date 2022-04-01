@@ -103,6 +103,9 @@ public class EmployeesQueryService extends QueryService<Employees> {
             if (criteria.getOrder() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getOrder(), Employees_.order));
             }
+            if (criteria.getImageName() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getImageName(), Employees_.imageName));
+            }
             if (criteria.getServicePointId() != null) {
                 specification =
                     specification.and(

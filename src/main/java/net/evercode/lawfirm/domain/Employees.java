@@ -48,13 +48,14 @@ public class Employees implements Serializable {
     @Column(name = "jhi_order", nullable = false)
     private Integer order;
 
-    @Lob
-    @Column(name = "image", nullable = false)
-    private byte[] image;
-
     @NotNull
-    @Column(name = "image_content_type", nullable = false)
-    private String imageContentType;
+    @Column(name = "image_name", nullable = false)
+    private String imageName;
+
+    @Lob
+    private transient byte[] image;
+
+    private transient String imageContentType;
 
     @ManyToOne
     private ServicePoints servicePoint;
@@ -148,6 +149,19 @@ public class Employees implements Serializable {
         this.order = order;
     }
 
+    public String getImageName() {
+        return this.imageName;
+    }
+
+    public Employees imageName(String imageName) {
+        this.setImageName(imageName);
+        return this;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
     public byte[] getImage() {
         return this.image;
     }
@@ -239,6 +253,7 @@ public class Employees implements Serializable {
             ", title='" + getTitle() + "'" +
             ", story='" + getStory() + "'" +
             ", order=" + getOrder() +
+            ", imageName='" + getImageName() + "'" +
             ", image='" + getImage() + "'" +
             ", imageContentType='" + getImageContentType() + "'" +
             "}";

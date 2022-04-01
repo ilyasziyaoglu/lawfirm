@@ -12,6 +12,7 @@ import {IServices} from "../entities/services/services.model";
 import {ServicesService} from "../entities/services/service/services.service";
 import {IEmployees} from "../entities/employees/employees.model";
 import {EmployeesService} from "../entities/employees/service/employees.service";
+import {IMAGE_PATH} from "app/app.constants";
 
 @Component({
   selector: 'jhi-home',
@@ -19,6 +20,8 @@ import {EmployeesService} from "../entities/employees/service/employees.service"
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
+  IMAGE_PATH = IMAGE_PATH;
+
   account: Account | null = null;
   references: IReferences[] | null = [];
   services: IServices[] | null = [];

@@ -8,10 +8,10 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
- * A Configs.
+ * A Config.
  */
 @Entity
-@Table(name = "configs")
+@Table(name = "config")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Config implements Serializable {
 
@@ -94,7 +94,7 @@ public class Config implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "Configs{" +
+        return "Config{" +
             "id=" + getId() +
             ", key='" + getKey() + "'" +
             ", value='" + getValue() + "'" +
