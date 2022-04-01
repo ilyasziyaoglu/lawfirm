@@ -2,19 +2,19 @@ import {Component, OnInit} from '@angular/core';
 import {HttpHeaders, HttpResponse} from '@angular/common/http';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
-import {IConfigs} from '../configs.model';
+import {IConfig} from '../config.model';
 
 import {ASC, DESC, ITEMS_PER_PAGE} from 'app/config/pagination.constants';
-import {ConfigsService} from '../service/configs.service';
-import {ConfigsDeleteDialogComponent} from '../delete/configs-delete-dialog.component';
+import {ConfigService} from '../service/config.service';
+import {ConfigDeleteDialogComponent} from '../delete/config-delete-dialog.component';
 import {ParseLinks} from 'app/core/util/parse-links.service';
 
 @Component({
-  selector: 'jhi-configs',
-  templateUrl: './configs.component.html',
+  selector: 'jhi-config',
+  templateUrl: './config.component.html',
 })
-export class ConfigsComponent implements OnInit {
-  configs: IConfigs[];
+export class ConfigComponent implements OnInit {
+  config: IConfig[];
   isLoading = false;
   itemsPerPage: number;
   links: { [key: string]: number };
@@ -22,8 +22,8 @@ export class ConfigsComponent implements OnInit {
   predicate: string;
   ascending: boolean;
 
-  constructor(protected configsService: ConfigsService, protected modalService: NgbModal, protected parseLinks: ParseLinks) {
-    this.configs = [];
+  constructor(protected configService: ConfigService, protected modalService: NgbModal, protected parseLinks: ParseLinks) {
+    this.config = [];
     this.itemsPerPage = ITEMS_PER_PAGE;
     this.page = 0;
     this.links = {
@@ -36,14 +36,14 @@ export class ConfigsComponent implements OnInit {
   loadAll(): void {
     this.isLoading = true;
 
-    this.configsService
+    this.configService
       .query({
         page: this.page,
         size: this.itemsPerPage,
         sort: this.sort(),
       })
       .subscribe({
-        next: (res: HttpResponse<IConfigs[]>) => {
+        next: (res: HttpResponse<IConfig[]>) => {
           this.isLoading = false;
           this.paginateConfigs(res.body, res.headers);
         },
@@ -55,7 +55,7 @@ export class ConfigsComponent implements OnInit {
 
   reset(): void {
     this.page = 0;
-    this.configs = [];
+    this.config = [];
     this.loadAll();
   }
 
@@ -68,13 +68,13 @@ export class ConfigsComponent implements OnInit {
     this.loadAll();
   }
 
-  trackId(index: number, item: IConfigs): number {
+  trackId(index: number, item: IConfig): number {
     return item.id!;
   }
 
-  delete(configs: IConfigs): void {
-    const modalRef = this.modalService.open(ConfigsDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
-    modalRef.componentInstance.configs = configs;
+  delete(config: IConfig): void {
+    const modalRef = this.modalService.open(ConfigDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.configs = config;
     // unsubscribe not needed because closed completes on modal close
     modalRef.closed.subscribe(reason => {
       if (reason === 'deleted') {
@@ -91,7 +91,7 @@ export class ConfigsComponent implements OnInit {
     return result;
   }
 
-  protected paginateConfigs(data: IConfigs[] | null, headers: HttpHeaders): void {
+  protected paginateConfigs(data: IConfig[] | null, headers: HttpHeaders): void {
     const linkHeader = headers.get('link');
     if (linkHeader) {
       this.links = this.parseLinks.parse(linkHeader);
@@ -102,7 +102,7 @@ export class ConfigsComponent implements OnInit {
     }
     if (data) {
       for (const d of data) {
-        this.configs.push(d);
+        this.config.push(d);
       }
     }
   }

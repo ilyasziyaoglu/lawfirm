@@ -1,6 +1,6 @@
 package net.evercode.lawfirm.web.rest;
 
-import net.evercode.lawfirm.domain.Configs;
+import net.evercode.lawfirm.domain.Config;
 import net.evercode.lawfirm.repository.ConfigsRepository;
 import net.evercode.lawfirm.service.ConfigsQueryService;
 import net.evercode.lawfirm.service.ConfigsService;
@@ -28,7 +28,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * REST controller for managing {@link net.evercode.lawfirm.domain.Configs}.
+ * REST controller for managing {@link Config}.
  */
 @RestController
 @RequestMapping("/api")
@@ -56,17 +56,17 @@ public class ConfigsResource {
     /**
      * {@code POST  /configs} : Create a new configs.
      *
-     * @param configs the configs to create.
+     * @param config the configs to create.
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new configs, or with status {@code 400 (Bad Request)} if the configs has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/configs")
-    public ResponseEntity<Configs> createConfigs(@Valid @RequestBody Configs configs) throws URISyntaxException {
-        log.debug("REST request to save Configs : {}", configs);
-        if (configs.getId() != null) {
+    public ResponseEntity<Config> createConfigs(@Valid @RequestBody Config config) throws URISyntaxException {
+        log.debug("REST request to save Configs : {}", config);
+        if (config.getId() != null) {
             throw new BadRequestAlertException("A new configs cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Configs result = configsService.save(configs);
+        Config result = configsService.save(config);
         return ResponseEntity
             .created(new URI("/api/configs/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
@@ -77,22 +77,22 @@ public class ConfigsResource {
      * {@code PUT  /configs/:id} : Updates an existing configs.
      *
      * @param id the id of the configs to save.
-     * @param configs the configs to update.
+     * @param config the configs to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated configs,
      * or with status {@code 400 (Bad Request)} if the configs is not valid,
      * or with status {@code 500 (Internal Server Error)} if the configs couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/configs/{id}")
-    public ResponseEntity<Configs> updateConfigs(
+    public ResponseEntity<Config> updateConfigs(
         @PathVariable(value = "id", required = false) final Long id,
-        @Valid @RequestBody Configs configs
+        @Valid @RequestBody Config config
     ) throws URISyntaxException {
-        log.debug("REST request to update Configs : {}, {}", id, configs);
-        if (configs.getId() == null) {
+        log.debug("REST request to update Configs : {}, {}", id, config);
+        if (config.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (!Objects.equals(id, configs.getId())) {
+        if (!Objects.equals(id, config.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
@@ -100,10 +100,10 @@ public class ConfigsResource {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        Configs result = configsService.save(configs);
+        Config result = configsService.save(config);
         return ResponseEntity
             .ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, configs.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, config.getId().toString()))
             .body(result);
     }
 
@@ -111,7 +111,7 @@ public class ConfigsResource {
      * {@code PATCH  /configs/:id} : Partial updates given fields of an existing configs, field will ignore if it is null
      *
      * @param id the id of the configs to save.
-     * @param configs the configs to update.
+     * @param config the configs to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated configs,
      * or with status {@code 400 (Bad Request)} if the configs is not valid,
      * or with status {@code 404 (Not Found)} if the configs is not found,
@@ -119,15 +119,15 @@ public class ConfigsResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/configs/{id}", consumes = { "application/json", "application/merge-patch+json" })
-    public ResponseEntity<Configs> partialUpdateConfigs(
+    public ResponseEntity<Config> partialUpdateConfigs(
         @PathVariable(value = "id", required = false) final Long id,
-        @NotNull @RequestBody Configs configs
+        @NotNull @RequestBody Config config
     ) throws URISyntaxException {
-        log.debug("REST request to partial update Configs partially : {}, {}", id, configs);
-        if (configs.getId() == null) {
+        log.debug("REST request to partial update Configs partially : {}, {}", id, config);
+        if (config.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (!Objects.equals(id, configs.getId())) {
+        if (!Objects.equals(id, config.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
@@ -135,11 +135,11 @@ public class ConfigsResource {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        Optional<Configs> result = configsService.partialUpdate(configs);
+        Optional<Config> result = configsService.partialUpdate(config);
 
         return ResponseUtil.wrapOrNotFound(
             result,
-            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, configs.getId().toString())
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, config.getId().toString())
         );
     }
 
@@ -151,12 +151,12 @@ public class ConfigsResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of configs in body.
      */
     @GetMapping("/configs")
-    public ResponseEntity<List<Configs>> getAllConfigs(
+    public ResponseEntity<List<Config>> getAllConfigs(
         ConfigsCriteria criteria,
         @org.springdoc.api.annotations.ParameterObject Pageable pageable
     ) {
         log.debug("REST request to get Configs by criteria: {}", criteria);
-        Page<Configs> page = configsQueryService.findByCriteria(criteria, pageable);
+        Page<Config> page = configsQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
@@ -180,9 +180,9 @@ public class ConfigsResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the configs, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/configs/{id}")
-    public ResponseEntity<Configs> getConfigs(@PathVariable Long id) {
+    public ResponseEntity<Config> getConfigs(@PathVariable Long id) {
         log.debug("REST request to get Configs : {}", id);
-        Optional<Configs> configs = configsService.findOne(id);
+        Optional<Config> configs = configsService.findOne(id);
         return ResponseUtil.wrapOrNotFound(configs);
     }
 

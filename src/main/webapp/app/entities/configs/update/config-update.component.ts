@@ -5,14 +5,14 @@ import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {finalize} from 'rxjs/operators';
 
-import {Configs, IConfigs} from '../configs.model';
-import {ConfigsService} from '../service/configs.service';
+import {Config, IConfig} from '../config.model';
+import {ConfigService} from '../service/config.service';
 
 @Component({
-  selector: 'jhi-configs-update',
-  templateUrl: './configs-update.component.html',
+  selector: 'jhi-config-update',
+  templateUrl: './config-update.component.html',
 })
-export class ConfigsUpdateComponent implements OnInit {
+export class ConfigUpdateComponent implements OnInit {
   isSaving = false;
 
   editForm = this.fb.group({
@@ -21,11 +21,11 @@ export class ConfigsUpdateComponent implements OnInit {
     value: [null, [Validators.required]],
   });
 
-  constructor(protected configsService: ConfigsService, protected activatedRoute: ActivatedRoute, protected fb: FormBuilder) {}
+  constructor(protected configService: ConfigService, protected activatedRoute: ActivatedRoute, protected fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ configs }) => {
-      this.updateForm(configs);
+    this.activatedRoute.data.subscribe(({ configs: config }) => {
+      this.updateForm(config);
     });
   }
 
@@ -35,15 +35,15 @@ export class ConfigsUpdateComponent implements OnInit {
 
   save(): void {
     this.isSaving = true;
-    const configs = this.createFromForm();
-    if (configs.id !== undefined) {
-      this.subscribeToSaveResponse(this.configsService.update(configs));
+    const config = this.createFromForm();
+    if (config.id !== undefined) {
+      this.subscribeToSaveResponse(this.configService.update(config));
     } else {
-      this.subscribeToSaveResponse(this.configsService.create(configs));
+      this.subscribeToSaveResponse(this.configService.create(config));
     }
   }
 
-  protected subscribeToSaveResponse(result: Observable<HttpResponse<IConfigs>>): void {
+  protected subscribeToSaveResponse(result: Observable<HttpResponse<IConfig>>): void {
     result.pipe(finalize(() => this.onSaveFinalize())).subscribe({
       next: () => this.onSaveSuccess(),
       error: () => this.onSaveError(),
@@ -62,17 +62,17 @@ export class ConfigsUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  protected updateForm(configs: IConfigs): void {
+  protected updateForm(config: IConfig): void {
     this.editForm.patchValue({
-      id: configs.id,
-      key: configs.key,
-      value: configs.value,
+      id: config.id,
+      key: config.key,
+      value: config.value,
     });
   }
 
-  protected createFromForm(): IConfigs {
+  protected createFromForm(): IConfig {
     return {
-      ...new Configs(),
+      ...new Config(),
       id: this.editForm.get(['id'])!.value,
       key: this.editForm.get(['key'])!.value,
       value: this.editForm.get(['value'])!.value,

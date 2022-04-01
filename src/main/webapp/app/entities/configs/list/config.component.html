@@ -1,21 +1,21 @@
 <div>
   <h2 id="page-heading" data-cy="ConfigsHeading">
-    <span jhiTranslate="lawfirmApp.configs.home.title">Configs</span>
+    <span jhiTranslate="lawfirmApp.config.home.title">Configs</span>
 
     <div class="d-flex justify-content-end">
       <button class="btn btn-info me-2" (click)="reset()" [disabled]="isLoading">
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
-        <span jhiTranslate="lawfirmApp.configs.home.refreshListLabel">Refresh List</span>
+        <span jhiTranslate="lawfirmApp.config.home.refreshListLabel">Refresh List</span>
       </button>
 
       <button
         id="jh-create-entity"
         data-cy="entityCreateButton"
-        class="btn btn-primary jh-create-entity create-configs"
-        [routerLink]="['/configs/new']"
+        class="btn btn-primary jh-create-entity create-config"
+        [routerLink]="['/config/new']"
       >
         <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="lawfirmApp.configs.home.createLabel"> Create a new Configs </span>
+        <span jhiTranslate="lawfirmApp.config.home.createLabel"> Create a new Configs </span>
       </button>
     </div>
   </h2>
@@ -24,32 +24,32 @@
 
   <jhi-alert></jhi-alert>
 
-  <div class="alert alert-warning" id="no-result" *ngIf="configs?.length === 0">
-    <span jhiTranslate="lawfirmApp.configs.home.notFound">No configs found</span>
+  <div class="alert alert-warning" id="no-result" *ngIf="config?.length === 0">
+    <span jhiTranslate="lawfirmApp.config.home.notFound">No config found</span>
   </div>
 
-  <div class="table-responsive" id="entities" *ngIf="configs && configs.length > 0">
+  <div class="table-responsive" id="entities" *ngIf="config && config.length > 0">
     <table class="table table-striped" aria-describedby="page-heading">
       <thead>
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="reset()">
           <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="key"><span jhiTranslate="lawfirmApp.configs.key">Key</span> <fa-icon icon="sort"></fa-icon></th>
-          <th scope="col" jhiSortBy="value"><span jhiTranslate="lawfirmApp.configs.value">Value</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="key"><span jhiTranslate="lawfirmApp.config.key">Key</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="value"><span jhiTranslate="lawfirmApp.config.value">Value</span> <fa-icon icon="sort"></fa-icon></th>
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
-        <tr *ngFor="let configs of configs; trackBy: trackId" data-cy="entityTable">
+        <tr *ngFor="let config of config; trackBy: trackId" data-cy="entityTable">
           <td>
-            <a [routerLink]="['/configs', configs.id, 'view']">{{ configs.id }}</a>
+            <a [routerLink]="['/config', config.id, 'view']">{{ config.id }}</a>
           </td>
-          <td>{{ configs.key }}</td>
-          <td>{{ configs.value }}</td>
+          <td>{{ config.key }}</td>
+          <td>{{ config.value }}</td>
           <td class="text-end">
             <div class="btn-group">
               <button
                 type="submit"
-                [routerLink]="['/configs', configs.id, 'view']"
+                [routerLink]="['/config', config.id, 'view']"
                 class="btn btn-info btn-sm"
                 data-cy="entityDetailsButton"
               >
@@ -59,7 +59,7 @@
 
               <button
                 type="submit"
-                [routerLink]="['/configs', configs.id, 'edit']"
+                [routerLink]="['/config', config.id, 'edit']"
                 class="btn btn-primary btn-sm"
                 data-cy="entityEditButton"
               >
@@ -67,7 +67,7 @@
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
               </button>
 
-              <button type="submit" (click)="delete(configs)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+              <button type="submit" (click)="delete(config)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
                 <fa-icon icon="times"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
               </button>

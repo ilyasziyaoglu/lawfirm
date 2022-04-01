@@ -1,5 +1,6 @@
 package net.evercode.lawfirm.config;
 
+import net.evercode.lawfirm.domain.Config;
 import org.ehcache.config.builders.CacheConfigurationBuilder;
 import org.ehcache.config.builders.ExpiryPolicyBuilder;
 import org.ehcache.config.builders.ResourcePoolsBuilder;
@@ -58,7 +59,7 @@ public class CacheConfiguration {
             createCache(cm, net.evercode.lawfirm.domain.Employees.class.getName() + ".services");
             createCache(cm, net.evercode.lawfirm.domain.References.class.getName());
             createCache(cm, net.evercode.lawfirm.domain.JobApplications.class.getName());
-            createCache(cm, net.evercode.lawfirm.domain.Configs.class.getName());
+            createCache(cm, Config.class.getName());
             createCache(cm, net.evercode.lawfirm.domain.Properties.class.getName());
             // jhipster-needle-ehcache-add-entry
         };

@@ -3,26 +3,26 @@ import {HttpHeaders, HttpResponse} from '@angular/common/http';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {of} from 'rxjs';
 
-import {ConfigsService} from '../service/configs.service';
+import {ConfigService} from '../service/config.service';
 
-import {ConfigsComponent} from './configs.component';
+import {ConfigComponent} from './config.component';
 
 describe('Configs Management Component', () => {
-  let comp: ConfigsComponent;
-  let fixture: ComponentFixture<ConfigsComponent>;
-  let service: ConfigsService;
+  let comp: ConfigComponent;
+  let fixture: ComponentFixture<ConfigComponent>;
+  let service: ConfigService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      declarations: [ConfigsComponent],
+      declarations: [ConfigComponent],
     })
-      .overrideTemplate(ConfigsComponent, '')
+      .overrideTemplate(ConfigComponent, '')
       .compileComponents();
 
-    fixture = TestBed.createComponent(ConfigsComponent);
+    fixture = TestBed.createComponent(ConfigComponent);
     comp = fixture.componentInstance;
-    service = TestBed.inject(ConfigsService);
+    service = TestBed.inject(ConfigService);
 
     const headers = new HttpHeaders();
     jest.spyOn(service, 'query').mockReturnValue(
@@ -41,7 +41,7 @@ describe('Configs Management Component', () => {
 
     // THEN
     expect(service.query).toHaveBeenCalled();
-    expect(comp.configs[0]).toEqual(expect.objectContaining({ id: 123 }));
+    expect(comp.config[0]).toEqual(expect.objectContaining({ id: 123 }));
   });
 
   it('should load a page', () => {
@@ -50,7 +50,7 @@ describe('Configs Management Component', () => {
 
     // THEN
     expect(service.query).toHaveBeenCalled();
-    expect(comp.configs[0]).toEqual(expect.objectContaining({ id: 123 }));
+    expect(comp.config[0]).toEqual(expect.objectContaining({ id: 123 }));
   });
 
   it('should calculate the sort attribute for an id', () => {
@@ -83,6 +83,6 @@ describe('Configs Management Component', () => {
     // THEN
     expect(comp.page).toEqual(0);
     expect(service.query).toHaveBeenCalledTimes(2);
-    expect(comp.configs[0]).toEqual(expect.objectContaining({ id: 123 }));
+    expect(comp.config[0]).toEqual(expect.objectContaining({ id: 123 }));
   });
 });

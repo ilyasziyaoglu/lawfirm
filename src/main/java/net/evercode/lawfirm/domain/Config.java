@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "configs")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class Configs implements Serializable {
+public class Config implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -37,7 +37,7 @@ public class Configs implements Serializable {
         return this.id;
     }
 
-    public Configs id(Long id) {
+    public Config id(Long id) {
         this.setId(id);
         return this;
     }
@@ -50,7 +50,7 @@ public class Configs implements Serializable {
         return this.key;
     }
 
-    public Configs key(String key) {
+    public Config key(String key) {
         this.setKey(key);
         return this;
     }
@@ -63,7 +63,7 @@ public class Configs implements Serializable {
         return this.value;
     }
 
-    public Configs value(String value) {
+    public Config value(String value) {
         this.setValue(value);
         return this;
     }
@@ -79,10 +79,10 @@ public class Configs implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Configs)) {
+        if (!(o instanceof Config)) {
             return false;
         }
-        return id != null && id.equals(((Configs) o).id);
+        return id != null && id.equals(((Config) o).id);
     }
 
     @Override

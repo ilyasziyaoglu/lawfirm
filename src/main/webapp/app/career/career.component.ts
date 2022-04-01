@@ -11,12 +11,12 @@ import {JobApplications} from "../entities/job-applications/job-applications.mod
 export class CareerComponent {
 
   applyForm = new FormGroup({
-    name: new FormControl('İlyas'),
-    surname: new FormControl('Ziyaoğlu'),
-    email: new FormControl('ilyasziyaoglu@gmail.com'),
-    phone: new FormControl('+905326541234'),
-    area: new FormControl('İş Hukuku'),
-    message: new FormControl('Beni işe alınız.'),
+    name: new FormControl(''),
+    surname: new FormControl(''),
+    email: new FormControl(''),
+    phone: new FormControl(''),
+    area: new FormControl(''),
+    message: new FormControl(''),
     cv: new FormControl(new File([], 'cv.pdf')),
     cvContentType: new FormControl(''),
   });

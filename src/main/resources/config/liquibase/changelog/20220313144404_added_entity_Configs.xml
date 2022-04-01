@@ -8,7 +8,7 @@
         Added the entity Configs.
     -->
     <changeSet id="20220313144404-1" author="jhipster">
-        <createTable tableName="configs">
+        <createTable tableName="config">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -34,9 +34,9 @@
     -->
     <changeSet id="20220313144404-1-data" author="jhipster" context="faker">
         <loadData
-                  file="config/liquibase/fake-data/configs.csv"
+                  file="config/liquibase/fake-data/config.csv"
                   separator=";"
-                  tableName="configs"
+                  tableName="config"
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
             <column name="key" type="string"/>

@@ -1,7 +1,7 @@
 package net.evercode.lawfirm.service;
 
-import net.evercode.lawfirm.domain.Configs;
-import net.evercode.lawfirm.domain.Configs_;
+import net.evercode.lawfirm.domain.Config;
+import net.evercode.lawfirm.domain.Config_;
 import net.evercode.lawfirm.repository.ConfigsRepository;
 import net.evercode.lawfirm.service.criteria.ConfigsCriteria;
 import org.slf4j.Logger;
@@ -16,14 +16,14 @@ import tech.jhipster.service.QueryService;
 import java.util.List;
 
 /**
- * Service for executing complex queries for {@link Configs} entities in the database.
+ * Service for executing complex queries for {@link Config} entities in the database.
  * The main input is a {@link ConfigsCriteria} which gets converted to {@link Specification},
  * in a way that all the filters must apply.
- * It returns a {@link List} of {@link Configs} or a {@link Page} of {@link Configs} which fulfills the criteria.
+ * It returns a {@link List} of {@link Config} or a {@link Page} of {@link Config} which fulfills the criteria.
  */
 @Service
 @Transactional(readOnly = true)
-public class ConfigsQueryService extends QueryService<Configs> {
+public class ConfigsQueryService extends QueryService<Config> {
 
     private final Logger log = LoggerFactory.getLogger(ConfigsQueryService.class);
 
@@ -34,27 +34,27 @@ public class ConfigsQueryService extends QueryService<Configs> {
     }
 
     /**
-     * Return a {@link List} of {@link Configs} which matches the criteria from the database.
+     * Return a {@link List} of {@link Config} which matches the criteria from the database.
      * @param criteria The object which holds all the filters, which the entities should match.
      * @return the matching entities.
      */
     @Transactional(readOnly = true)
-    public List<Configs> findByCriteria(ConfigsCriteria criteria) {
+    public List<Config> findByCriteria(ConfigsCriteria criteria) {
         log.debug("find by criteria : {}", criteria);
-        final Specification<Configs> specification = createSpecification(criteria);
+        final Specification<Config> specification = createSpecification(criteria);
         return configsRepository.findAll(specification);
     }
 
     /**
-     * Return a {@link Page} of {@link Configs} which matches the criteria from the database.
+     * Return a {@link Page} of {@link Config} which matches the criteria from the database.
      * @param criteria The object which holds all the filters, which the entities should match.
      * @param page The page, which should be returned.
      * @return the matching entities.
      */
     @Transactional(readOnly = true)
-    public Page<Configs> findByCriteria(ConfigsCriteria criteria, Pageable page) {
+    public Page<Config> findByCriteria(ConfigsCriteria criteria, Pageable page) {
         log.debug("find by criteria : {}, page: {}", criteria, page);
-        final Specification<Configs> specification = createSpecification(criteria);
+        final Specification<Config> specification = createSpecification(criteria);
         return configsRepository.findAll(specification, page);
     }
 
@@ -66,7 +66,7 @@ public class ConfigsQueryService extends QueryService<Configs> {
     @Transactional(readOnly = true)
     public long countByCriteria(ConfigsCriteria criteria) {
         log.debug("count by criteria : {}", criteria);
-        final Specification<Configs> specification = createSpecification(criteria);
+        final Specification<Config> specification = createSpecification(criteria);
         return configsRepository.count(specification);
     }
 
@@ -75,21 +75,21 @@ public class ConfigsQueryService extends QueryService<Configs> {
      * @param criteria The object which holds all the filters, which the entities should match.
      * @return the matching {@link Specification} of the entity.
      */
-    protected Specification<Configs> createSpecification(ConfigsCriteria criteria) {
-        Specification<Configs> specification = Specification.where(null);
+    protected Specification<Config> createSpecification(ConfigsCriteria criteria) {
+        Specification<Config> specification = Specification.where(null);
         if (criteria != null) {
             // This has to be called first, because the distinct method returns null
             if (criteria.getDistinct() != null) {
                 specification = specification.and(distinct(criteria.getDistinct()));
             }
             if (criteria.getId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getId(), Configs_.id));
+                specification = specification.and(buildRangeSpecification(criteria.getId(), Config_.id));
             }
             if (criteria.getKey() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getKey(), Configs_.key));
+                specification = specification.and(buildStringSpecification(criteria.getKey(), Config_.key));
             }
             if (criteria.getValue() != null) {
-                specification = specification.and(buildStringSpecification(criteria.getValue(), Configs_.value));
+                specification = specification.and(buildStringSpecification(criteria.getValue(), Config_.value));
             }
         }
         return specification;

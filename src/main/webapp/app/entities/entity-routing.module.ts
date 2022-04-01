@@ -32,7 +32,7 @@ import {RouterModule} from '@angular/router';
       {
         path: 'configs',
         data: { pageTitle: 'lawfirmApp.configs.home.title' },
-        loadChildren: () => import('./configs/configs.module').then(m => m.ConfigsModule),
+        loadChildren: () => import('./configs/config.module').then(m => m.ConfigModule),
       },
       {
         path: 'properties',

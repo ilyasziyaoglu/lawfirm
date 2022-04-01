@@ -6,27 +6,27 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {of} from 'rxjs';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
-import {ConfigsService} from '../service/configs.service';
+import {ConfigService} from '../service/config.service';
 
-import {ConfigsDeleteDialogComponent} from './configs-delete-dialog.component';
+import {ConfigDeleteDialogComponent} from './config-delete-dialog.component';
 
-describe('Configs Management Delete Component', () => {
-  let comp: ConfigsDeleteDialogComponent;
-  let fixture: ComponentFixture<ConfigsDeleteDialogComponent>;
-  let service: ConfigsService;
+describe('Config Management Delete Component', () => {
+  let comp: ConfigDeleteDialogComponent;
+  let fixture: ComponentFixture<ConfigDeleteDialogComponent>;
+  let service: ConfigService;
   let mockActiveModal: NgbActiveModal;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      declarations: [ConfigsDeleteDialogComponent],
+      declarations: [ConfigDeleteDialogComponent],
       providers: [NgbActiveModal],
     })
-      .overrideTemplate(ConfigsDeleteDialogComponent, '')
+      .overrideTemplate(ConfigDeleteDialogComponent, '')
       .compileComponents();
-    fixture = TestBed.createComponent(ConfigsDeleteDialogComponent);
+    fixture = TestBed.createComponent(ConfigDeleteDialogComponent);
     comp = fixture.componentInstance;
-    service = TestBed.inject(ConfigsService);
+    service = TestBed.inject(ConfigService);
     mockActiveModal = TestBed.inject(NgbActiveModal);
   });
 

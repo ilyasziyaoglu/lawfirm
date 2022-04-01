@@ -1,6 +1,7 @@
 package net.evercode.lawfirm.service;
 
-import net.evercode.lawfirm.domain.Configs;
+import com.github.dockerjava.api.exception.NotFoundException;
+import net.evercode.lawfirm.domain.Config;
 import net.evercode.lawfirm.repository.ConfigsRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 /**
- * Service Implementation for managing {@link Configs}.
+ * Service Implementation for managing {@link Config}.
  */
 @Service
 @Transactional
@@ -29,31 +30,31 @@ public class ConfigsService {
     /**
      * Save a configs.
      *
-     * @param configs the entity to save.
+     * @param config the entity to save.
      * @return the persisted entity.
      */
-    public Configs save(Configs configs) {
-        log.debug("Request to save Configs : {}", configs);
-        return configsRepository.save(configs);
+    public Config save(Config config) {
+        log.debug("Request to save Configs : {}", config);
+        return configsRepository.save(config);
     }
 
     /**
      * Partially update a configs.
      *
-     * @param configs the entity to update partially.
+     * @param config the entity to update partially.
      * @return the persisted entity.
      */
-    public Optional<Configs> partialUpdate(Configs configs) {
-        log.debug("Request to partially update Configs : {}", configs);
+    public Optional<Config> partialUpdate(Config config) {
+        log.debug("Request to partially update Configs : {}", config);
 
         return configsRepository
-            .findById(configs.getId())
+            .findById(config.getId())
             .map(existingConfigs -> {
-                if (configs.getKey() != null) {
-                    existingConfigs.setKey(configs.getKey());
+                if (config.getKey() != null) {
+                    existingConfigs.setKey(config.getKey());
                 }
-                if (configs.getValue() != null) {
-                    existingConfigs.setValue(configs.getValue());
+                if (config.getValue() != null) {
+                    existingConfigs.setValue(config.getValue());
                 }
 
                 return existingConfigs;
@@ -68,7 +69,7 @@ public class ConfigsService {
      * @return the list of entities.
      */
     @Transactional(readOnly = true)
-    public Page<Configs> findAll(Pageable pageable) {
+    public Page<Config> findAll(Pageable pageable) {
         log.debug("Request to get all Configs");
         return configsRepository.findAll(pageable);
     }
@@ -80,9 +81,26 @@ public class ConfigsService {
      * @return the entity.
      */
     @Transactional(readOnly = true)
-    public Optional<Configs> findOne(Long id) {
+    public Optional<Config> findOne(Long id) {
         log.debug("Request to get Configs : {}", id);
         return configsRepository.findById(id);
+    }
+
+    /**
+     * Get one configs by key.
+     *
+     * @param key the key of the entity.
+     * @return the entity.
+     */
+    @Transactional(readOnly = true)
+    public Config findTopByKey(String key) {
+        log.debug("Request to get Config by key : {}", key);
+        Optional<Config> optionalConfig = configsRepository.findTopByKey(key);
+        if (optionalConfig.isEmpty()) {
+            log.error("Configs not found! Key: {}", key);
+            throw new NotFoundException("Configs not found! Key: " + key);
+        }
+        return optionalConfig.get();
     }
 
     /**

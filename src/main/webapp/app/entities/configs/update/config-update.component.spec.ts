@@ -6,21 +6,21 @@ import {ActivatedRoute} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 import {from, of, Subject} from 'rxjs';
 
-import {ConfigsService} from '../service/configs.service';
-import {Configs, IConfigs} from '../configs.model';
+import {ConfigService} from '../service/config.service';
+import {Config, IConfig} from '../config.model';
 
-import {ConfigsUpdateComponent} from './configs-update.component';
+import {ConfigUpdateComponent} from './config-update.component';
 
 describe('Configs Management Update Component', () => {
-  let comp: ConfigsUpdateComponent;
-  let fixture: ComponentFixture<ConfigsUpdateComponent>;
+  let comp: ConfigUpdateComponent;
+  let fixture: ComponentFixture<ConfigUpdateComponent>;
   let activatedRoute: ActivatedRoute;
-  let configsService: ConfigsService;
+  let configService: ConfigService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([])],
-      declarations: [ConfigsUpdateComponent],
+      declarations: [ConfigUpdateComponent],
       providers: [
         FormBuilder,
         {
@@ -31,77 +31,77 @@ describe('Configs Management Update Component', () => {
         },
       ],
     })
-      .overrideTemplate(ConfigsUpdateComponent, '')
+      .overrideTemplate(ConfigUpdateComponent, '')
       .compileComponents();
 
-    fixture = TestBed.createComponent(ConfigsUpdateComponent);
+    fixture = TestBed.createComponent(ConfigUpdateComponent);
     activatedRoute = TestBed.inject(ActivatedRoute);
-    configsService = TestBed.inject(ConfigsService);
+    configService = TestBed.inject(ConfigService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
     it('Should update editForm', () => {
-      const configs: IConfigs = { id: 456 };
+      const config: IConfig = { id: 456 };
 
-      activatedRoute.data = of({ configs });
+      activatedRoute.data = of({ config });
       comp.ngOnInit();
 
-      expect(comp.editForm.value).toEqual(expect.objectContaining(configs));
+      expect(comp.editForm.value).toEqual(expect.objectContaining(config));
     });
   });
 
   describe('save', () => {
     it('Should call update service on save for existing entity', () => {
       // GIVEN
-      const saveSubject = new Subject<HttpResponse<Configs>>();
-      const configs = { id: 123 };
-      jest.spyOn(configsService, 'update').mockReturnValue(saveSubject);
+      const saveSubject = new Subject<HttpResponse<Config>>();
+      const config = { id: 123 };
+      jest.spyOn(configService, 'update').mockReturnValue(saveSubject);
       jest.spyOn(comp, 'previousState');
-      activatedRoute.data = of({ configs });
+      activatedRoute.data = of({ config: config });
       comp.ngOnInit();
 
       // WHEN
       comp.save();
       expect(comp.isSaving).toEqual(true);
-      saveSubject.next(new HttpResponse({ body: configs }));
+      saveSubject.next(new HttpResponse({ body: config }));
       saveSubject.complete();
 
       // THEN
       expect(comp.previousState).toHaveBeenCalled();
-      expect(configsService.update).toHaveBeenCalledWith(configs);
+      expect(configService.update).toHaveBeenCalledWith(config);
       expect(comp.isSaving).toEqual(false);
     });
 
     it('Should call create service on save for new entity', () => {
       // GIVEN
-      const saveSubject = new Subject<HttpResponse<Configs>>();
-      const configs = new Configs();
-      jest.spyOn(configsService, 'create').mockReturnValue(saveSubject);
+      const saveSubject = new Subject<HttpResponse<Config>>();
+      const config = new Config();
+      jest.spyOn(configService, 'create').mockReturnValue(saveSubject);
       jest.spyOn(comp, 'previousState');
-      activatedRoute.data = of({ configs });
+      activatedRoute.data = of({ config: config });
       comp.ngOnInit();
 
       // WHEN
       comp.save();
       expect(comp.isSaving).toEqual(true);
-      saveSubject.next(new HttpResponse({ body: configs }));
+      saveSubject.next(new HttpResponse({ body: config }));
       saveSubject.complete();
 
       // THEN
-      expect(configsService.create).toHaveBeenCalledWith(configs);
+      expect(configService.create).toHaveBeenCalledWith(config);
       expect(comp.isSaving).toEqual(false);
       expect(comp.previousState).toHaveBeenCalled();
     });
 
     it('Should set isSaving to false on error', () => {
       // GIVEN
-      const saveSubject = new Subject<HttpResponse<Configs>>();
-      const configs = { id: 123 };
-      jest.spyOn(configsService, 'update').mockReturnValue(saveSubject);
+      const saveSubject = new Subject<HttpResponse<Config>>();
+      const config = { id: 123 };
+      jest.spyOn(configService, 'update').mockReturnValue(saveSubject);
       jest.spyOn(comp, 'previousState');
-      activatedRoute.data = of({ configs });
+      activatedRoute.data = of({ config: config });
       comp.ngOnInit();
 
       // WHEN
@@ -110,7 +110,7 @@ describe('Configs Management Update Component', () => {
       saveSubject.error('This is an error!');
 
       // THEN
-      expect(configsService.update).toHaveBeenCalledWith(configs);
+      expect(configService.update).toHaveBeenCalledWith(config);
       expect(comp.isSaving).toEqual(false);
       expect(comp.previousState).not.toHaveBeenCalled();
     });

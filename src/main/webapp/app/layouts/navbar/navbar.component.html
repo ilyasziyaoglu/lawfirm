@@ -1,4 +1,4 @@
-<nav data-cy="navbar" class="navbar navbar-dark navbar-expand-md">
+<nav data-cy="navbar" class="navbar navbar-dark navbar-expand-md bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
       <img style="width: 130px;" src="content/images/logo.png" alt="Lawfirm">
@@ -143,13 +143,13 @@
               <a
                 *jhiHasAnyAuthority="'ROLE_ADMIN'"
                 class="dropdown-item"
-                routerLink="configs"
+                routerLink="config"
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
                 (click)="collapseNavbar()"
               >
                 <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                <span jhiTranslate="global.menu.entities.configs">Configs</span>
+                <span jhiTranslate="global.menu.entities.config">Configs</span>
               </a>
             </li>
             <li>

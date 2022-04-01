@@ -5,17 +5,17 @@ import {ActivatedRoute, ActivatedRouteSnapshot, convertToParamMap, Router} from 
 import {RouterTestingModule} from '@angular/router/testing';
 import {of} from 'rxjs';
 
-import {Configs, IConfigs} from '../configs.model';
-import {ConfigsService} from '../service/configs.service';
+import {Config, IConfig} from '../config.model';
+import {ConfigService} from '../service/config.service';
 
-import {ConfigsRoutingResolveService} from './configs-routing-resolve.service';
+import {ConfigRoutingResolveService} from './config-routing-resolve.service';
 
-describe('Configs routing resolve service', () => {
+describe('Config routing resolve service', () => {
   let mockRouter: Router;
   let mockActivatedRouteSnapshot: ActivatedRouteSnapshot;
-  let routingResolveService: ConfigsRoutingResolveService;
-  let service: ConfigsService;
-  let resultConfigs: IConfigs | undefined;
+  let routingResolveService: ConfigRoutingResolveService;
+  let service: ConfigService;
+  let resultConfig: IConfig | undefined;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -34,9 +34,9 @@ describe('Configs routing resolve service', () => {
     mockRouter = TestBed.inject(Router);
     jest.spyOn(mockRouter, 'navigate').mockImplementation(() => Promise.resolve(true));
     mockActivatedRouteSnapshot = TestBed.inject(ActivatedRoute).snapshot;
-    routingResolveService = TestBed.inject(ConfigsRoutingResolveService);
-    service = TestBed.inject(ConfigsService);
-    resultConfigs = undefined;
+    routingResolveService = TestBed.inject(ConfigRoutingResolveService);
+    service = TestBed.inject(ConfigService);
+    resultConfig = undefined;
   });
 
   describe('resolve', () => {
@@ -47,12 +47,12 @@ describe('Configs routing resolve service', () => {
 
       // WHEN
       routingResolveService.resolve(mockActivatedRouteSnapshot).subscribe(result => {
-        resultConfigs = result;
+        resultConfig = result;
       });
 
       // THEN
       expect(service.find).toBeCalledWith(123);
-      expect(resultConfigs).toEqual({ id: 123 });
+      expect(resultConfig).toEqual({ id: 123 });
     });
 
     it('should return new IConfigs if id is not provided', () => {
@@ -62,27 +62,27 @@ describe('Configs routing resolve service', () => {
 
       // WHEN
       routingResolveService.resolve(mockActivatedRouteSnapshot).subscribe(result => {
-        resultConfigs = result;
+        resultConfig = result;
       });
 
       // THEN
       expect(service.find).not.toBeCalled();
-      expect(resultConfigs).toEqual(new Configs());
+      expect(resultConfig).toEqual(new Config());
     });
 
     it('should route to 404 page if data not found in server', () => {
       // GIVEN
-      jest.spyOn(service, 'find').mockReturnValue(of(new HttpResponse({ body: null as unknown as Configs })));
+      jest.spyOn(service, 'find').mockReturnValue(of(new HttpResponse({ body: null as unknown as Config })));
       mockActivatedRouteSnapshot.params = { id: 123 };
 
       // WHEN
       routingResolveService.resolve(mockActivatedRouteSnapshot).subscribe(result => {
-        resultConfigs = result;
+        resultConfig = result;
       });
 
       // THEN
       expect(service.find).toBeCalledWith(123);
-      expect(resultConfigs).toEqual(undefined);
+      expect(resultConfig).toEqual(undefined);
       expect(mockRouter.navigate).toHaveBeenCalledWith(['404']);
     });
   });

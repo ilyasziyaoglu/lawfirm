@@ -1,5 +1,6 @@
 package net.evercode.lawfirm.service.criteria;
 
+import net.evercode.lawfirm.domain.Config;
 import org.springdoc.api.annotations.ParameterObject;
 import tech.jhipster.service.Criteria;
 import tech.jhipster.service.filter.Filter;
@@ -10,7 +11,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * Criteria class for the {@link net.evercode.lawfirm.domain.Configs} entity. This class is used
+ * Criteria class for the {@link Config} entity. This class is used
  * in {@link net.evercode.lawfirm.web.rest.ConfigsResource} to receive all the possible filtering options from
  * the Http GET request parameters.
  * For example the following could be a valid request:

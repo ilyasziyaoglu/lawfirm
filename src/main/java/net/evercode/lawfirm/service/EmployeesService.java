@@ -1,5 +1,6 @@
 package net.evercode.lawfirm.service;
 
+import net.evercode.lawfirm.common.utils.FileUtils;
 import net.evercode.lawfirm.domain.Employees;
 import net.evercode.lawfirm.repository.EmployeesRepository;
 import org.slf4j.Logger;
@@ -22,9 +23,11 @@ public class EmployeesService {
     private final Logger log = LoggerFactory.getLogger(EmployeesService.class);
 
     private final EmployeesRepository employeesRepository;
+    private final FileUtils fileUtils;
 
-    public EmployeesService(EmployeesRepository employeesRepository) {
+    public EmployeesService(EmployeesRepository employeesRepository, FileUtils fileUtils) {
         this.employeesRepository = employeesRepository;
+        this.fileUtils = fileUtils;
     }
 
     /**
@@ -35,6 +38,7 @@ public class EmployeesService {
      */
     public Employees save(Employees employees) {
         log.debug("Request to save Employees : {}", employees);
+        fileUtils.saveFile(employees.getImage(), "images", employees.getImageContentType());
         return employeesRepository.save(employees);
     }
 
@@ -66,6 +70,7 @@ public class EmployeesService {
                     existingEmployees.setOrder(employees.getOrder());
                 }
                 if (employees.getImage() != null) {
+                    // TODO: implement also image upload
                     existingEmployees.setImage(employees.getImage());
                 }
                 if (employees.getImageContentType() != null) {
@@ -116,6 +121,9 @@ public class EmployeesService {
      */
     public void delete(Long id) {
         log.debug("Request to delete Employees : {}", id);
-        employeesRepository.deleteById(id);
+        employeesRepository.findTopById(id).ifPresent(employees -> {
+            // TODO: delete also image file
+            employeesRepository.deleteById(id);
+        });
     }
 }
